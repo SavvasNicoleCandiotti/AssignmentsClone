@@ -1,7 +1,12 @@
 
-<ul>
-    <app-assignment
-        *ngFor="let assignment of assignments"
-        [assignment]="assignment"
-    ></app-assignment>
-</ul>
+<div>
+    <h1>
+        Assignments
+    </h1>
+    <ul>
+        <app-assignment
+            *ngFor="let assignment of assignments"
+            [assignment]="assignment"
+        ></app-assignment>
+    </ul>
+</div>
