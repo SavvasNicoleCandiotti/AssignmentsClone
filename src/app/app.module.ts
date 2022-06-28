@@ -7,6 +7,7 @@ import { AssignmentsComponent } from './assignments/assignments.component';
 import { AssignmentComponent } from './assignments/assignment/assignment.component';
 import { CoursesComponent } from './courses/courses.component';
 import { CourseComponent } from './courses/course/course.component';
+import { NavbarComponent } from './navbar/navbar.component';
   // import { TooltipModule } from 'ngx-bootstrap/tooltip';
 
 @NgModule({
@@ -15,7 +16,8 @@ import { CourseComponent } from './courses/course/course.component';
     AssignmentsComponent,
     AssignmentComponent,
     CoursesComponent,
-    CourseComponent
+    CourseComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,
