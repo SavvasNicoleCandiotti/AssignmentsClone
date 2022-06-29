@@ -8,6 +8,8 @@ import { AssignmentComponent } from './assignments/assignment/assignment.compone
 import { CoursesComponent } from './courses/courses.component';
 import { CourseComponent } from './courses/course/course.component';
 import { NavbarComponent } from './navbar/navbar.component';
+import { AssignmentDetailComponent } from './assignments/assignment-detail/assignment-detail.component';
+import { HomeComponent } from './home/home.component';
   // import { TooltipModule } from 'ngx-bootstrap/tooltip';
 
 @NgModule({
@@ -17,7 +19,9 @@ import { NavbarComponent } from './navbar/navbar.component';
     AssignmentComponent,
     CoursesComponent,
     CourseComponent,
-    NavbarComponent
+    NavbarComponent,
+    AssignmentDetailComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
