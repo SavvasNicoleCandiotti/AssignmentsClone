@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { AssignmentsService } from 'src/app/assignments.service';
+import { ActivatedRoute, Router } from '@angular/router';
+import { AssignmentsService } from 'src/app/assignments/assignments.service';
 import { Assignment } from '../assignment.model';
 
 @Component({
@@ -10,11 +11,19 @@ import { Assignment } from '../assignment.model';
 export class AssignmentComponent implements OnInit {
 
   @Input() assignment : Assignment
-  constructor(private assignmentsService : AssignmentsService) {
+  constructor(
+    private assignmentsService : AssignmentsService,
+    private router : Router,
+    private route : ActivatedRoute
+  ) {
    }
 
   ngOnInit(): void {
     
   }
 
+  selectAssignment = () => {
+    this.assignmentsService.selectAssignmentEvent.emit(this.assignment)
+    this.router.navigate([this.assignment.id], {relativeTo: this.route})
+  }
 }
