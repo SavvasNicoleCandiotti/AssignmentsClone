@@ -11,12 +11,8 @@ export class AssignmentsService {
   new Assignment(3, "Third Assignment", "This is the first assignment",1, 3, "2022-06-07", "2022-07_07")]
   constructor() { }
 
-  getAssignments(){
-    return this.assignments;
-  }
+  getAssignments = () => [...this.assignments];
 
-  getAssignment(id : number){
-    return this.assignments.find(assignment => assignment.id === id)
-  }
+  getAssignment = (id : number) => this.assignments.find(assignment => assignment.id === id)
 
 }
