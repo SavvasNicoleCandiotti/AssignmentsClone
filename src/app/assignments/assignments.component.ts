@@ -1,5 +1,5 @@
 import { Component, OnInit, Output } from '@angular/core';
-import { AssignmentsService } from '../assignments.service';
+import { AssignmentsService } from './assignments.service';
 import { Assignment } from './assignment.model';
 
 @Component({
