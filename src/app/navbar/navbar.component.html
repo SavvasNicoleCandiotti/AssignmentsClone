@@ -11,9 +11,12 @@
       </a>
     </div>
   
-    <div id="navbarBasicExample" class="navbar-menu {{activeString}}">
+    <div 
+        class="navbar-menu {{activeString}}"
+        routerLinkActive="active"
+        [routerLinkActiveOptions]="{exact: true}">
       <div class="navbar-start">
-        <a class="navbar-item">
+        <a class="navbar-item" routerLink="/">
             Home
           </a>
 
@@ -21,7 +24,7 @@
           Classes
         </a>
   
-        <a class="navbar-item">
+        <a class="navbar-item" routerLink="/assignments">
           Assignments
         </a>
       </div>
