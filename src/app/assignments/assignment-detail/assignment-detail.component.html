@@ -1,0 +1,22 @@
+<section class="section is-medium">
+    <h1 class="title">{{assignment.title}}</h1>
+    <h2 class="subtitle">{{assignment.description}}</h2>
+    <p>Assigned on: {{assignment.assigned_on}}</p>
+    <p>Due on: {{assignment.due_on}}</p>
+    <br>
+    <div class="container">
+        <div class="columns is-tablet">
+            <div class="column">
+                <button class="button is-success is-responsive" (click)="navigateToAssignments()">Return to Assignments</button>
+            </div>
+            <div class="column">
+                <button class="button is-success is-responsive" (click)="navigateHome()">Return to Home</button>
+            </div>
+            <div class="column">
+                <button class="button is-warning is-responsive">Edit Assignment</button>
+            </div>
+        </div>
+    </div>
+    
+   
+</section>
