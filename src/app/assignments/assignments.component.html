@@ -3,11 +3,5 @@
     <h1 class="title">
         Assignments
     </h1>
-    <div>
-        <ng-container *ngFor="let assignment of assignmentsArray"> 
-
-     <app-assignment  [assignmentsArray]="assignment"></app-assignment>
-        </ng-container>
-    
-    </div>
+    <app-assignment *ngFor="let assignment of assignmentsArray" [assignment]="assignment"></app-assignment>
 </section>

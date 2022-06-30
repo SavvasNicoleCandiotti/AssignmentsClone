@@ -9,8 +9,16 @@ import { Assignment } from '../assignment.model';
   styleUrls: ['./assignment.component.css']
 })
 export class AssignmentComponent implements OnInit {
-  @Input() assignmentsArray
-  @Input() assignment : Assignment
+  @Input() assignment : {
+    id: number, 
+    course_id: number, 
+    assignment_id: number,
+    assignedOn: Date,
+    dueOn: Date,
+    title: string,
+    description: string
+  }
+
   constructor(
     private assignmentsService : AssignmentsService,
     private router : Router,
@@ -19,11 +27,10 @@ export class AssignmentComponent implements OnInit {
    }
 
   ngOnInit(): void {
-    
   }
 
   selectAssignment = () => {
-    this.assignmentsService.selectAssignmentEvent.emit(this.assignmentsArray)
-    this.router.navigate([this.assignmentsArray.id], {relativeTo: this.route})
+    this.assignmentsService.selectAssignmentEvent.emit(this.assignment)
+    this.router.navigate([this.assignment.id], {relativeTo: this.route})
   }
 }

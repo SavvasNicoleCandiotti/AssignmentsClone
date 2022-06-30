@@ -6,9 +6,9 @@
         <div class="img-container">  
             <img src="/assets/assignmentThumbnail.png" alt="assignment thumbnail">
         </div>
-        {{assignmentsArray.title}}</span>
+        {{assignment.title}}</span>
     <span class="assignment-date column">
-        <p>Assigned {{assignmentsArray.assigned_on}}</p>
-        <p>Due {{assignmentsArray.due_on}}</p>
+        <p>Assigned {{assignment.assignedOn | date}}</p>
+        <p>Due {{assignment.dueOn | date}}</p>
     </span>
 </div>
