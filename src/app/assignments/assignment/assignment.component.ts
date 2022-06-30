@@ -9,8 +9,16 @@ import { Assignment } from '../assignment.model';
   styleUrls: ['./assignment.component.css']
 })
 export class AssignmentComponent implements OnInit {
+  @Input() assignment : {
+    id: number, 
+    course_id: number, 
+    assignment_id: number,
+    assignedOn: Date,
+    dueOn: Date,
+    title: string,
+    description: string
+  }
 
-  @Input() assignment : Assignment
   constructor(
     private assignmentsService : AssignmentsService,
     private router : Router,
@@ -19,7 +27,6 @@ export class AssignmentComponent implements OnInit {
    }
 
   ngOnInit(): void {
-    
   }
 
   selectAssignment = () => {

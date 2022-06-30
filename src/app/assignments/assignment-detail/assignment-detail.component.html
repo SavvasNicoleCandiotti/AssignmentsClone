@@ -1,8 +1,8 @@
 <section class="section is-medium">
     <h1 class="title">{{assignment.title}}</h1>
     <h2 class="subtitle">{{assignment.description}}</h2>
-    <p>Assigned on: {{assignment.assigned_on}}</p>
-    <p>Due on: {{assignment.due_on}}</p>
+    <p>Assigned on: {{assignment.assignedOn | date}}</p>
+    <p>Due on: {{assignment.dueOn | date}}</p>
     <br>
     <div class="container">
         <div class="columns is-tablet">

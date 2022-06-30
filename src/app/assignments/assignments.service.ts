@@ -1,21 +1,70 @@
 import { EventEmitter, Injectable } from '@angular/core';
 import { Assignment } from './assignment.model';
+import {HttpClient} from '@angular/common/http'
+import { formatDate } from '@angular/common';
+import { TemplateBindingParseResult } from '@angular/compiler';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AssignmentsService {
 
-  private assignments : Assignment[] = [ new Assignment(1, "First Assignment", "This is the first assignment",1, 1, "2022-06-05", "2022-07_05"), 
-  new Assignment(2, "Second Assignment", "This is the second assignment",1, 2, "2022-06-06", "2022-07_06"), 
-  new Assignment(3, "Third Assignment", "This is the first assignment",1, 3, "2022-06-07", "2022-07_07")]
-  constructor() { }
+  private assignmentsArray : {
+    id: number, 
+    course_id: number, 
+    assignment_id: number,
+    assignedOn: Date,
+    dueOn: Date,
+    title: string,
+    description: string
+  }[] = []
 
-  selectAssignmentEvent = new EventEmitter<Assignment>()
+  public initialFetch = false
+
+  constructor(private http: HttpClient) { }
+  // index route
+  fetchAllAssignments(){
+      return this.http.get('http://localhost:3000/course_assignments');
+    }
+
+    // show route
+  fetchAssignment(id){
+    return this.http.get('http://localhost:3000/course_assignments/' + id);
+  }
+
+  selectAssignmentEvent = new EventEmitter<{
+    id: number, 
+    course_id: number, 
+    assignment_id: number,
+    assignedOn: Date,
+    dueOn: Date,
+    title: string,
+    description: string
+  }>()
   
-  getAssignments = () => [...this.assignments];
+  getAssignments = () => [...this.assignmentsArray];
 
-  getAssignment = (id : number) => this.assignments.find(assignment => assignment.id === id)
+  getAssignment = (id : number) => this.assignmentsArray.find(assignment => assignment.id === id)
 
+  setAssignments = (array) => {
+    this.assignmentsArray = array.map(assignment => {
+      return {...assignment, dueOn: new Date (assignment.dueOn), assignedOn: new Date(assignment.assignedOn)}
+    })
+    console.log(this.assignmentsArray)
+  }
+
+  addAssignment = (assignment) => {
+    this.assignmentsArray = [
+      ...this.assignmentsArray, 
+      {...assignment, 
+        dueOn: new Date (assignment.dueOn), 
+        assignedOn: new Date(assignment.assignedOn)
+      }
+    ]
+  }
+
+  formatDate(date: string){
+    return new Date(parseInt(date.slice(0, 4)), parseInt(date.slice(5, 7)), parseInt(date.slice(8, 10)))
+ }
 
 }
