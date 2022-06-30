@@ -4,9 +4,10 @@
         Assignments
     </h1>
     <div>
-        <app-assignment
-            *ngFor="let assignment of assignments"
-            [assignment]="assignment"
-        ></app-assignment>
+        <ng-container *ngFor="let assignment of assignmentsArray"> 
+
+     <app-assignment  [assignmentsArray]="assignment"></app-assignment>
+        </ng-container>
+    
     </div>
 </section>

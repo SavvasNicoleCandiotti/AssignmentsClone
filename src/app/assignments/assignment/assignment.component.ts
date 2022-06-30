@@ -9,7 +9,7 @@ import { Assignment } from '../assignment.model';
   styleUrls: ['./assignment.component.css']
 })
 export class AssignmentComponent implements OnInit {
-
+  @Input() assignmentsArray
   @Input() assignment : Assignment
   constructor(
     private assignmentsService : AssignmentsService,
@@ -23,7 +23,7 @@ export class AssignmentComponent implements OnInit {
   }
 
   selectAssignment = () => {
-    this.assignmentsService.selectAssignmentEvent.emit(this.assignment)
-    this.router.navigate([this.assignment.id], {relativeTo: this.route})
+    this.assignmentsService.selectAssignmentEvent.emit(this.assignmentsArray)
+    this.router.navigate([this.assignmentsArray.id], {relativeTo: this.route})
   }
 }
