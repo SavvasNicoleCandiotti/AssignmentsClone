@@ -20,19 +20,23 @@ export class AssignmentDetailComponent implements OnInit {
     description: string
   }
 
+  public status : string = "idle"
+
   constructor(
     private assignmentsService : AssignmentsService,
     private route : ActivatedRoute,
     private router : Router
-  ) {
+  ) {}
+
+  ngOnInit(): void {
     this.assignmentsService.selectAssignmentEvent
       .subscribe(assignment => this.assignment = assignment);
 
-   }
+    this.assignmentsService.fetchEvent
+      .subscribe(status => this.status = status);
 
-  ngOnInit(): void {
-    if(this.assignmentsService.getAssignment(
-      parseInt(this.route.snapshot.params['id']))){
+      //need to add error handling. What if they enter a url without a record?
+    if(this.assignmentsService.getAssignment(parseInt(this.route.snapshot.params['id']))){
         this.assignment = this.assignmentsService.getAssignment(
           parseInt(this.route.snapshot.params['id']))
           console.log("Didn't fetch")
@@ -49,11 +53,17 @@ export class AssignmentDetailComponent implements OnInit {
   navigateHome = () => this.router.navigate(['/'])
 
   getFetchedAssignment(){
-    this.assignmentsService.fetchAssignment(parseInt(this.route.snapshot.params['id'])).subscribe((r)=>{
-      this.assignmentsService.addAssignment(r)
-      this.assignment = this.assignmentsService.getAssignment(parseInt(this.route.snapshot.params['id']))
-      console.log("fetched") 
-    })
+    this.assignmentsService.setAssignmentStatus("loading")
+    this.assignmentsService.fetchEvent.emit("loading")
+    setTimeout(
+      () => this.assignmentsService.fetchAssignment(parseInt(this.route.snapshot.params['id'])).subscribe((r)=>{
+        this.assignmentsService.addAssignment(r)
+        this.assignment = this.assignmentsService.getAssignment(parseInt(this.route.snapshot.params['id']))
+        this.assignmentsService.setAssignmentStatus("success")
+        this.assignmentsService.fetchEvent.emit("success")
+
+        console.log("fetched") 
+      }), 1000)
   }
 
 }
