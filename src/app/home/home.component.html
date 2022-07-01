@@ -1,5 +1,10 @@
+<div class="container">
+
+
+
+
 <section class="section">
     <h1 class="title">Welcome Home</h1>
-    <h2 class="subtitle">This is the home page</h2>
+    <app-home-course-card *ngFor="let course of coursesArray" [course]="course"></app-home-course-card>
 </section>
-<app-home-course-card></app-home-course-card>
+</div>

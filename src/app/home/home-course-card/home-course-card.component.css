@@ -1,0 +1,15 @@
+.card {
+    margin:10px;
+}
+
+.card-header {
+    color:white;
+    background-color: #008000;
+
+
+}
+.is-one-quarter{
+    display:flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
