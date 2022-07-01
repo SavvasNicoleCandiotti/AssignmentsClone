@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, EventEmitter } from '@angular/core';
 import {HttpClient} from '@angular/common/http'
 
 
@@ -8,12 +8,15 @@ import {HttpClient} from '@angular/common/http'
 })
 export class CoursesService {
 
-    private coursesArray : {
+  private coursesArray : {
     id: number,
     name: string,
     gradeLevel: number,
     show_resources: {}[]
   }[] = []
+
+  private coursesStatus = "idle"
+  public courseStatus = "idle"
 
   constructor(private http:HttpClient) {}
     // index
@@ -27,4 +30,34 @@ export class CoursesService {
     return this.http.get('http://localhost:3000/courses/' + id);
 
    }
+
+   selectCourseEvent = new EventEmitter<{
+    id: number,
+    name: string,
+    gradeLevel: number,
+    show_resources: {}[]
+  }>()
+  
+  getCourses = () => [...this.coursesArray];
+
+  getCourse = (id : number) => this.coursesArray.find(course => course.id === id)
+
+  setCourses = (array) => {
+    this.coursesArray = array
+    console.log(this.coursesArray)
+  }
+
+  addCourse = (course) => {
+    this.coursesArray = [...this.coursesArray, {...course}]
+  }
+
+  setStatus = (status) => this.coursesStatus = status
+
+  getStatus = () => this.coursesStatus
+
+  getCourseAssignmentStatus = () => this.courseStatus
+  setCourseAssignmentStatus = (status) => this.courseStatus = status
+
+  fetchEvent = new EventEmitter<string>()
+
   }
