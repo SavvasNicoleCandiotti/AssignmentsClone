@@ -15,6 +15,7 @@ import { HomeComponent } from './home/home.component';
 import { CourseAssignmentsComponent } from './course-assignments/course-assignments.component';
 import { CourseAssignmentComponent } from './course-assignments/course-assignment/course-assignment.component';
 import { CourseAssignmentDetailComponent } from './course-assignments/course-assignment-detail/course-assignment-detail.component';
+import { HomeCourseCardComponent } from './home/home-course-card/home-course-card.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { CourseAssignmentDetailComponent } from './course-assignments/course-ass
     HomeComponent,
     CourseAssignmentsComponent,
     CourseAssignmentComponent,
-    CourseAssignmentDetailComponent
+    CourseAssignmentDetailComponent,
+    HomeCourseCardComponent
   ],
   imports: [
     BrowserModule,
