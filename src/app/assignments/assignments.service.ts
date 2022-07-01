@@ -19,7 +19,8 @@ export class AssignmentsService {
     description: string
   }[] = []
 
-  public initialFetch = false
+  private assignmentsStatus = "idle"
+  public assignmentStatus = "idle"
 
   constructor(private http: HttpClient) { }
   // index route
@@ -62,6 +63,15 @@ export class AssignmentsService {
       }
     ]
   }
+
+  setStatus = (status) => this.assignmentsStatus = status
+
+  getStatus = () => this.assignmentsStatus
+
+  getAssignmentStatus = () => this.assignmentStatus
+  setAssignmentStatus = (status) => this.assignmentStatus = status
+
+  fetchEvent = new EventEmitter<string>()
 
   formatDate(date: string){
     return new Date(parseInt(date.slice(0, 4)), parseInt(date.slice(5, 7)), parseInt(date.slice(8, 10)))
