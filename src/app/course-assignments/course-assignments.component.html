@@ -1,0 +1,13 @@
+
+<section class="section">
+	<h1 class="title">
+		    Course Assignments
+	</h1>
+	<div *ngIf="status != 'loading'; else loading">
+			<app-course-assignment *ngFor="let courseAssignment of courseAssignmentsArray" [courseAssignment]="courseAssignment"></app-course-assignment>
+	</div>
+		<ng-template #loading>
+			<br>
+			<span class="loader"></span>      
+		</ng-template>
+</section>

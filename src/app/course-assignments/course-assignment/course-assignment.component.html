@@ -1,0 +1,14 @@
+<div
+    class="course-assignment-tile columns"
+    (click)="selectCourseAssignment()"
+>
+    <span class="course-assignment-title column">
+        <div class="img-container">  
+            <img src="/assets/assignmentThumbnail.png" alt="course-assignment thumbnail">
+        </div>
+        {{courseAssignment.title}}</span>
+    <span class="course-assignment-date column">
+        <p>Assigned {{courseAssignment.assignedOn}}</p>
+        <p>Due {{courseAssignment.dueOn}}</p>
+    </span>
+</div>

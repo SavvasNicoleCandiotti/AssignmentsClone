@@ -1,0 +1,28 @@
+.course-assignment-tile {
+    border: 1px solid;
+    border-color: gray;
+    border-radius: 4px;
+    padding: 2px;
+    margin: 4px;
+}
+
+.course-assignment-title {
+    text-align: left;
+    display: flex;
+    align-items: top;
+    font-weight: bold;
+}
+
+.course-assignment-date {
+    font-style: italic;
+    font-weight: lighter;
+    text-align: right;
+}
+
+img {
+    max-height: 50px;
+}
+
+.img-container {
+    margin-right: 10px;
+}
