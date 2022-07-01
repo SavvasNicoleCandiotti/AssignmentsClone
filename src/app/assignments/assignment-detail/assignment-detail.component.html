@@ -1,4 +1,4 @@
-<section class="section is-medium">
+<section class="section is-medium" *ngIf="status != 'loading'; else loading">
     <h1 class="title">{{assignment.title}}</h1>
     <h2 class="subtitle">{{assignment.description}}</h2>
     <p>Assigned on: {{assignment.assignedOn | date}}</p>
@@ -17,6 +17,11 @@
             </div>
         </div>
     </div>
-    
-   
 </section>
+
+<ng-template #loading>
+    <section class="section is-medium">
+        <br>
+        <span class="loader"></span>
+    </section>
+</ng-template>
