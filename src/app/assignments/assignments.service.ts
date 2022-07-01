@@ -1,8 +1,5 @@
 import { EventEmitter, Injectable } from '@angular/core';
-import { Assignment } from './assignment.model';
 import {HttpClient} from '@angular/common/http'
-import { formatDate } from '@angular/common';
-import { TemplateBindingParseResult } from '@angular/compiler';
 
 @Injectable({
   providedIn: 'root'
@@ -11,10 +8,6 @@ export class AssignmentsService {
 
   private assignmentsArray : {
     id: number, 
-    course_id: number, 
-    assignment_id: number,
-    assignedOn: Date,
-    dueOn: Date,
     title: string,
     description: string
   }[] = []
@@ -35,10 +28,6 @@ export class AssignmentsService {
 
   selectAssignmentEvent = new EventEmitter<{
     id: number, 
-    course_id: number, 
-    assignment_id: number,
-    assignedOn: Date,
-    dueOn: Date,
     title: string,
     description: string
   }>()

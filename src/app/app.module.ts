@@ -12,6 +12,9 @@ import { CourseComponent } from './courses/course/course.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { AssignmentDetailComponent } from './assignments/assignment-detail/assignment-detail.component';
 import { HomeComponent } from './home/home.component';
+import { CourseAssignmentsComponent } from './course-assignments/course-assignments.component';
+import { CourseAssignmentComponent } from './course-assignments/course-assignment/course-assignment.component';
+import { CourseAssignmentDetailComponent } from './course-assignments/course-assignment-detail/course-assignment-detail.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +25,10 @@ import { HomeComponent } from './home/home.component';
     CourseComponent,
     NavbarComponent,
     AssignmentDetailComponent,
-    HomeComponent
+    HomeComponent,
+    CourseAssignmentsComponent,
+    CourseAssignmentComponent,
+    CourseAssignmentDetailComponent
   ],
   imports: [
     BrowserModule,

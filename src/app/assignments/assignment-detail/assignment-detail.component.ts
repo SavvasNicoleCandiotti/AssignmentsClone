@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AssignmentsService } from 'src/app/assignments/assignments.service';
-import { Assignment } from '../assignment.model';
 
 @Component({
   selector: 'app-assignment-detail',
@@ -12,10 +11,6 @@ export class AssignmentDetailComponent implements OnInit {
 
   public assignment: {
     id: number, 
-    course_id: number, 
-    assignment_id: number,
-    assignedOn: Date,
-    dueOn: Date,
     title: string,
     description: string
   }

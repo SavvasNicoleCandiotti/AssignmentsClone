@@ -11,10 +11,6 @@ import { subscribeOn } from 'rxjs';
 export class AssignmentsComponent implements OnInit {
   assignmentsArray:{
     id: number, 
-    course_id: number, 
-    assignment_id: number,
-    assignedOn: Date,
-    dueOn: Date,
     title: string,
     description: string
   }[] = []
@@ -41,7 +37,7 @@ export class AssignmentsComponent implements OnInit {
   getAllAssignments(){
     this.assignmentsService.setStatus("loading")
     this.assignmentsService.fetchEvent.emit("loading")
-    
+
     setTimeout(
       () => this.assignmentsService.fetchAllAssignments().subscribe((r)=>{
         this.assignmentsService.setAssignments(r)
