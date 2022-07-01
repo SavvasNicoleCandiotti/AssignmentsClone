@@ -1,7 +1,13 @@
 
 <section class="section">
-    <h1 class="title">
-        Assignments
-    </h1>
-    <app-assignment *ngFor="let assignment of assignmentsArray" [assignment]="assignment"></app-assignment>
+	<h1 class="title">
+			Assignments
+	</h1>
+	<div *ngIf="status != 'loading'; else loading">
+			<app-assignment *ngFor="let assignment of assignmentsArray" [assignment]="assignment"></app-assignment>
+	</div>
+		<ng-template #loading>
+			<br>
+			<span class="loader"></span>      
+		</ng-template>
 </section>
