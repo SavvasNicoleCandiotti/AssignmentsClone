@@ -8,9 +8,14 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class HomeCourseCardComponent implements OnInit {
   @Input() course;
+  showProgramDropdown:boolean=false
  constructor(){}
 handleClick(){
   console.log(this.course)
+}
+showPrograms(){
+  this.showProgramDropdown=!this.showProgramDropdown
+  console.log(this.course.show_programs)
 }
 
 

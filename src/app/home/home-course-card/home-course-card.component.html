@@ -13,6 +13,8 @@
         <div class="content">
             <div class="columns">
                 <div class="column is-three-quarters">
+
+<p>{{course | json}}</p>
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec iaculis mauris.</div>
                 <div class="column is-one-quarter">
                     <a (click)="handleClick()"><svg xmlns="http://www.w3.org/2000/svg" width="12px" height="12px" viewBox="0 0 54 54" viewBox="0 0 512 512">
@@ -30,16 +32,35 @@
                         <path
                             d="M32 32C49.67 32 64 46.33 64 64V400C64 408.8 71.16 416 80 416H480C497.7 416 512 430.3 512 448C512 465.7 497.7 480 480 480H80C35.82 480 0 444.2 0 400V64C0 46.33 14.33 32 32 32zM160 224C177.7 224 192 238.3 192 256V320C192 337.7 177.7 352 160 352C142.3 352 128 337.7 128 320V256C128 238.3 142.3 224 160 224zM288 320C288 337.7 273.7 352 256 352C238.3 352 224 337.7 224 320V160C224 142.3 238.3 128 256 128C273.7 128 288 142.3 288 160V320zM352 192C369.7 192 384 206.3 384 224V320C384 337.7 369.7 352 352 352C334.3 352 320 337.7 320 320V224C320 206.3 334.3 192 352 192zM480 320C480 337.7 465.7 352 448 352C430.3 352 416 337.7 416 320V96C416 78.33 430.3 64 448 64C465.7 64 480 78.33 480 96V320z" />
                     </svg> Data</a> <br>
-                 <a routerLink="/course-assignments"> <svg xmlns="http://www.w3.org/2000/svg" width="12px" height="12px" viewBox="0 0 54 54" viewBox="0 0 512 512">
+                 <a (click)="showPrograms()"> <svg xmlns="http://www.w3.org/2000/svg" width="12px" height="12px" viewBox="0 0 54 54" viewBox="0 0 512 512">
                     <!--! Font Awesome Pro 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
                     <path
                         d="M144.3 32.04C106.9 31.29 63.7 41.44 18.6 61.29c-11.42 5.026-18.6 16.67-18.6 29.15l0 357.6c0 11.55 11.99 19.55 22.45 14.65c126.3-59.14 219.8 11 223.8 14.01C249.1 478.9 252.5 480 256 480c12.4 0 16-11.38 16-15.98V80.04c0-5.203-2.531-10.08-6.781-13.08C263.3 65.58 216.7 33.35 144.3 32.04zM557.4 61.29c-45.11-19.79-88.48-29.61-125.7-29.26c-72.44 1.312-118.1 33.55-120.9 34.92C306.5 69.96 304 74.83 304 80.04v383.1C304 468.4 307.5 480 320 480c3.484 0 6.938-1.125 9.781-3.328c3.925-3.018 97.44-73.16 223.8-14c10.46 4.896 22.45-3.105 22.45-14.65l.0001-357.6C575.1 77.97 568.8 66.31 557.4 61.29z" />
-                </svg> Programs ></a> <br>
+                </svg> Programs <svg xmlns="http://www.w3.org/2000/svg" class="ionicon"  width="12px" height="12px" viewBox="0 0 54 54" viewBox="0 0 512 512">
+                    <title>Caret Down</title>
+                    <path
+                        d="M98 190.06l139.78 163.12a24 24 0 0036.44 0L414 190.06c13.34-15.57 2.28-39.62-18.22-39.62h-279.6c-20.5 0-31.56 24.05-18.18 39.62z" />
+                </svg></a> <br>
+                    <div *ngIf="showProgramDropdown===true" class="dropdown is-active">
+                          <div class="dropdown-menu" id="dropdown-menu" role="menu">
+                            <div class="dropdown-content">
+                            <a class="dropdown-item">
+                                 Dropdown item
+                         </a>
+
+                         <a href="#" class="dropdown-item is-active">
+                        Active dropdown item
+                        </a>
+                        <a href="#" class="dropdown-item">
+                        Other dropdown item
+                     </a>
+                    <hr class="dropdown-divider">
 
                 </div>
-            <!-- </div> -->
-
+                </div>
+                </div>
         </div>
+
     </div>
     <!-- <footer class="card-footer">
         <a href="#" class="card-footer-item">Save</a>
