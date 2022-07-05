@@ -16,6 +16,10 @@ import { CourseAssignmentsComponent } from './course-assignments/course-assignme
 import { CourseAssignmentComponent } from './course-assignments/course-assignment/course-assignment.component';
 import { CourseAssignmentDetailComponent } from './course-assignments/course-assignment-detail/course-assignment-detail.component';
 import { HomeCourseCardComponent } from './home/home-course-card/home-course-card.component';
+import { ProgramsComponent } from './programs/programs.component';
+import { ProgramComponent } from './programs/program/program.component';
+import { ProgramDetailComponent } from './programs/program-detail/program-detail.component';
+import { CourseProgramsComponent } from './course-programs/course-programs.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +34,11 @@ import { HomeCourseCardComponent } from './home/home-course-card/home-course-car
     CourseAssignmentsComponent,
     CourseAssignmentComponent,
     CourseAssignmentDetailComponent,
-    HomeCourseCardComponent
+    HomeCourseCardComponent,
+    ProgramsComponent,
+    ProgramComponent,
+    ProgramDetailComponent,
+    CourseProgramsComponent
   ],
   imports: [
     BrowserModule,
