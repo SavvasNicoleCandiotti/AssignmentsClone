@@ -12,6 +12,7 @@ export class ProgramsServiceService {
     name: string,
     gradeLevel: number,
     is_common_core: boolean,
+    subject: string
   }[] = []
 
   private programsStatus = "idle"
@@ -34,7 +35,8 @@ export class ProgramsServiceService {
     id: number,
     name: string,
     gradeLevel: number,
-    is_common_core: boolean
+    is_common_core: boolean,
+    subject: string
   }>()
   
   getPrograms = () => [...this.programsArray];
@@ -54,8 +56,8 @@ export class ProgramsServiceService {
 
   getStatus = () => this.programsStatus
 
-  getProgramAssignmentStatus = () => this.programStatus
-  setProgramAssignmentStatus = (status) => this.programStatus = status
+  getProgramsStatus = () => this.programStatus
+  setProgramStatus = (status) => this.programStatus = status
 
   fetchEvent = new EventEmitter<string>()
 
