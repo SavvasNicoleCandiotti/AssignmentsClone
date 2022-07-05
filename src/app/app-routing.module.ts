@@ -5,10 +5,14 @@ import { AssignmentsComponent } from './assignments/assignments.component';
 import { CourseAssignmentDetailComponent } from './course-assignments/course-assignment-detail/course-assignment-detail.component';
 import { CourseAssignmentsComponent } from './course-assignments/course-assignments.component';
 import { HomeComponent } from './home/home.component';
+import { ProgramDetailComponent } from './programs/program-detail/program-detail.component';
+import { ProgramsComponent } from './programs/programs.component';
 
 const routes: Routes = [
   {path: 'course-assignments', component: CourseAssignmentsComponent},
   {path: 'course-assignments/:id', component: CourseAssignmentDetailComponent},
+  {path: 'programs', component: ProgramsComponent},
+  {path: 'programss/:id', component: ProgramDetailComponent},
   {path: 'assignments', component: AssignmentsComponent},
   {path: 'assignments/:id', component: AssignmentDetailComponent},
   {path: '', component: HomeComponent}
