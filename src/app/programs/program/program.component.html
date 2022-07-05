@@ -1,33 +1,16 @@
-<div
-    class="program-tile columns"
-    (click)="selectProgram()"
->
-    <span class="program-title column">
-        <div class="img-container">  
-            <img src="/assets/assignmentThumbnail.png" alt="program thumbnail">
-        </div>
-        {{program.name}}</span>
-</div>
-
-<div class="card">
+<a (click)="selectProgram()">
+  <div class="card">
     <div class="card-image">
-      <figure class="image is-4by3">
+      <figure class="image">
         <img src="/assets/savvasLogo.png" alt="program thumbnail">
       </figure>
     </div>
+    <p class="banner">{{program.subject}}</p>
     <div class="card-content">
-      <div class="media">
-        <div class="media-content">
-          <p class="title is-4">{{program.name}}</p>
-        </div>
-      </div>
-  
       <div class="content">
-        <p class="title is-4">{{program.name}}</p>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-        Phasellus nec iaculis mauris. <a>@bulmaio</a>.
-        <a href="#">#css</a> <a href="#">#responsive</a>
-        <br>
+        <p class="subtitle">{{program.name}}</p>
       </div>
     </div>
   </div>
+</a>
+
