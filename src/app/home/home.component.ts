@@ -35,7 +35,7 @@ export class HomeComponent implements OnInit {
   getCourses(){
     //this loads the spinner while it loads
     this.coursesService.setStatus("loading")
-    this.coursesService.fetchEvent.emit("loading")
+    this.coursesService.fetchEvent.emit(this.coursesService.getStatus())
     setTimeout(
       () => this.coursesService.fetchAllCourses().subscribe((r)=>{
         //set coursesArray in coursesService to r
@@ -44,7 +44,7 @@ export class HomeComponent implements OnInit {
         this.coursesArray = this.coursesService.getCourses()
         //set status to success to stop rendering the spinner and load the component
         this.coursesService.setStatus("success")
-        this.coursesService.fetchEvent.emit("success")
+        this.coursesService.fetchEvent.emit(this.coursesService.getStatus())
         console.log("Fetched")
       }), 1000) 
   }

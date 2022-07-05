@@ -58,7 +58,7 @@
 								<div *ngIf="showProgramDropdown===true" class="dropdown is-active">
 									<div class="dropdown-menu" id="dropdown-menu" role="menu">
 										<div class="dropdown-content">
-											<div *ngFor="let program of course.show_programs">
+											<div *ngFor="let program of course.programs">
 												<a 
 													class="dropdown-item"
 													(click)="selectProgram(program.id)"
