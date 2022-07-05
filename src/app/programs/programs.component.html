@@ -4,7 +4,9 @@
 			Programs
 	</h1>
 	<div *ngIf="status != 'loading'; else loading">
-			<app-program *ngFor="let program of programsArray" [program]="program"></app-program>
+			<div class="columns is-multiline">
+				<app-program class="column is-one-quarter"  *ngFor="let program of programsArray" [program]="program"></app-program>
+			</div>
 	</div>
 		<ng-template #loading>
 			<br>
