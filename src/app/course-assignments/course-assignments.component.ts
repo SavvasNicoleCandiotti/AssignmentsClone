@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { CourseAssignmentsService } from './course-assignments.service';
 
 @Component({
@@ -15,13 +16,16 @@ export class CourseAssignmentsComponent implements OnInit {
     assignedOn: Date,
     dueOn: Date,
     title: string,
-    description: string
+    description: string,
+    program_id: number
   }[] = []
 
   public status : string = "idle"
 
-  constructor(private courseAssignmentsService : CourseAssignmentsService) {
-  }
+  constructor(
+    private courseAssignmentsService : CourseAssignmentsService, 
+    private route : ActivatedRoute
+  ) {}
 
   ngOnInit(): void {
 
@@ -30,10 +34,13 @@ export class CourseAssignmentsComponent implements OnInit {
     
     this.status = this.courseAssignmentsService.getStatus()
     if(this.status === "success"){
-        this.courseAssignmentsArray = this.courseAssignmentsService.getCourseAssignments()
+        this.courseAssignmentsArray = this.courseAssignmentsService.getCourseAssignmentsForProgram(
+          parseInt(this.route.snapshot.params['id']))
+          console.log(this.courseAssignmentsArray)
           console.log("Didn't fetch")
       }else if(this.status === "idle"){
         this.getAllCourseAssignments()
+        
       }
   }
 
@@ -44,7 +51,10 @@ export class CourseAssignmentsComponent implements OnInit {
     setTimeout(
       () => this.courseAssignmentsService.fetchAllCourseAssignments().subscribe((r)=>{
         this.courseAssignmentsService.setCourseAssignments(r)
-        this.courseAssignmentsArray = this.courseAssignmentsService.getCourseAssignments()
+        this.courseAssignmentsArray = this.courseAssignmentsService.getCourseAssignmentsForProgram(
+          parseInt(this.route.snapshot.params['id'])
+        )
+        // this.courseAssignmentsArray = this.courseAssignmentsService.getCourseAssignments()
         this.courseAssignmentsService.setStatus("success")
         this.courseAssignmentsService.fetchEvent.emit("success")
         console.log("Fetched")
