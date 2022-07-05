@@ -1,0 +1,13 @@
+
+<section class="section">
+	<h1 class="title">
+			Programs
+	</h1>
+	<div *ngIf="status != 'loading'; else loading">
+			<app-program *ngFor="let program of programsArray" [program]="program"></app-program>
+	</div>
+		<ng-template #loading>
+			<br>
+			<span class="loader"></span>      
+		</ng-template>
+</section>
