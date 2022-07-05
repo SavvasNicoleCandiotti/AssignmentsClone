@@ -13,7 +13,8 @@ export class CourseAssignmentsService {
     assignedOn: Date,
     dueOn: Date,
     title: string,
-    description: string
+    description: string,
+    program_id: number
   }[] = []
 
   private courseAssignmentsStatus = "idle"
@@ -37,7 +38,8 @@ export class CourseAssignmentsService {
     assignedOn: Date,
     dueOn: Date,
     title: string,
-    description: string
+    description: string,
+    program_id: number
   }>()
   
   getCourseAssignments = () => [...this.courseAssignmentsArray];
@@ -55,6 +57,8 @@ export class CourseAssignmentsService {
       {...courseAssignment}
     ]
   }
+
+  getCourseAssignmentsForProgram = (id : number) => this.courseAssignmentsArray.filter(courseAssignment => courseAssignment.program_id === id)
 
   setStatus = (status) => this.courseAssignmentsStatus = status
 

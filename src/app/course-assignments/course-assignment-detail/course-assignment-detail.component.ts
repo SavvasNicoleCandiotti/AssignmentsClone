@@ -16,7 +16,8 @@ export class CourseAssignmentDetailComponent implements OnInit {
     assignedOn: Date,
     dueOn: Date,
     title: string,
-    description: string
+    description: string,
+    program_id: number
   }
 
   public status : string = "idle"
