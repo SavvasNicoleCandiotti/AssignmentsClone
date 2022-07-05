@@ -1,3 +1,4 @@
+import { identifierName } from '@angular/compiler';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AssignmentDetailComponent } from './assignments/assignment-detail/assignment-detail.component';
@@ -9,10 +10,41 @@ import { ProgramDetailComponent } from './programs/program-detail/program-detail
 import { ProgramsComponent } from './programs/programs.component';
 
 const routes: Routes = [
-  {path: 'course-assignments', component: CourseAssignmentsComponent},
-  {path: 'course-assignments/:id', component: CourseAssignmentDetailComponent},
-  {path: 'programs', component: ProgramsComponent},
-  {path: 'programs/:id', component: ProgramDetailComponent},
+  {
+    path: "programs",
+    children: [
+      {
+        path: ":id", 
+        children: [
+          { path: "", component: ProgramDetailComponent},
+          {
+            path: "course_assignments", 
+            children: [
+              {path: ":id", component: CourseAssignmentDetailComponent},
+              {path: '', component: CourseAssignmentsComponent}
+            ]}
+        ]
+      },
+      {path: "", component: ProgramsComponent}
+    ]
+  },
+  {
+    path: "courses",
+    children: [
+      {
+        path: ":id", 
+        children: [
+          {
+            path: "course_assignments", 
+            children: [
+              {path: ":id", component: CourseAssignmentDetailComponent},
+              {path: '', component: CourseAssignmentsComponent}
+            ]}
+        ]
+      },
+      {path: "", component: ProgramsComponent}
+    ]
+  },
   {path: 'assignments', component: AssignmentsComponent},
   {path: 'assignments/:id', component: AssignmentDetailComponent},
   {path: '', component: HomeComponent}
