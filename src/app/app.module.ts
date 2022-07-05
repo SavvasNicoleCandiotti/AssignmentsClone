@@ -21,6 +21,7 @@ import { ProgramComponent } from './programs/program/program.component';
 import { ProgramDetailComponent } from './programs/program-detail/program-detail.component';
 import { CourseProgramsComponent } from './course-programs/course-programs.component';
 import { CourseAssignmentDetailsComponent } from './home/course-assignment-details/course-assignment-details.component';
+import { CreateAssignmentModalComponent } from './assignments/create-assignment-modal/create-assignment-modal.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -39,7 +40,8 @@ import { CourseAssignmentDetailsComponent } from './home/course-assignment-detai
     ProgramComponent,
     ProgramDetailComponent,
     CourseProgramsComponent,
-    CourseAssignmentDetailsComponent
+    CourseAssignmentDetailsComponent,
+    CreateAssignmentModalComponent
   ],
   imports: [
     BrowserModule,

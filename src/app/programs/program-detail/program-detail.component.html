@@ -8,4 +8,8 @@
             <p>Grid of assignment cards</p>
         </div>
     </div>
+    <br>
+    <button class="button" (click)="toggleModal()">Add an Assignment to this Program</button>
+
+    <app-create-assignment-modal [program_id]="program.id" [showModal]="showCreateAssignmentModal" (modalBtnClick)="closeModal()" *ngIf="showCreateAssignmentModal"></app-create-assignment-modal>
 </section>

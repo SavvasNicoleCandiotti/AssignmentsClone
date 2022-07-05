@@ -8,7 +8,7 @@ import { ProgramsServiceService } from '../programs-service.service';
   styleUrls: ['./program-detail.component.css']
 })
 export class ProgramDetailComponent implements OnInit {
-
+showCreateAssignmentModal:boolean = false
   public program: {
     id: number,
     name: string,
@@ -44,12 +44,18 @@ export class ProgramDetailComponent implements OnInit {
       parseInt(this.route.snapshot.params['id'])
     )
   }
+  toggleModal(){
+    this.showCreateAssignmentModal = !this.showCreateAssignmentModal
+  }
+  closeModal(){
+  this.showCreateAssignmentModal = false;
+  }
 
   //this won't work
   //courses/1/course_assignments
   navigateToPrograms = () => this.router.navigate(['assignments'])
 
-  
+
   navigateHome = () => this.router.navigate(['/'])
 
   getFetchedProgram(){
@@ -62,7 +68,7 @@ export class ProgramDetailComponent implements OnInit {
         this.programsService.setProgramStatus("success")
         this.programsService.fetchEvent.emit("success")
 
-        console.log("fetched") 
+        console.log("fetched")
       }), 1000)
   }
 }
