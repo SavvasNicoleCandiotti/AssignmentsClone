@@ -13,7 +13,8 @@ export class ProgramComponent implements OnInit {
     id: number, 
     name: string,
     gradeLevel: number,
-    is_common_core: boolean;
+    is_common_core: boolean,
+    subject: string
   }
 
   constructor(
