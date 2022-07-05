@@ -9,7 +9,7 @@
 						</span>
 				</button>
 		</header>
-		<div class = " searchbardiv container">
+		<div class = "searchbardiv container">
 			<svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" viewBox="0 0 54 54" viewBox="0 0 512 512">
 				<!--! Font Awesome Pro 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
 				<path
@@ -20,17 +20,13 @@
 		<div class="card-content">
 				<div class="content">
 					<div class="columns">
-							<div class="column is-three-quarters">
-								<!-- <div *ngIf="course.course_assignments.length===0" class="no-assignments">
-									<h5>No Assignments</h5>
-									<p>There are no assignments available to view </p>
-								</div> -->
-								<!-- <div *ngIf="course.course_assignments.length !==0"> -->
-									<app-course-assignment-details *ngFor="let courseAssignment of course.course_assignments" [courseAssignment]="courseAssignment"></app-course-assignment-details>
-									<!-- <p>{{course.course_assignments | json}}</p> -->
-								<!-- </div> -->
-
-
+						<div class="column is-three-quarters">
+							<app-course-assignment-details 
+								*ngFor="let courseAssignment of course.course_assignments" 
+								[courseAssignment]="courseAssignment" 
+								(click) = selectCourseAssignment(courseAssignment.id)
+							>
+							</app-course-assignment-details>
 						</div>
 							<div class="column is-one-quarter">
 								<a (click)="handleClick()">
