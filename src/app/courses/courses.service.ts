@@ -12,7 +12,8 @@ export class CoursesService {
     id: number,
     name: string,
     gradeLevel: number,
-    show_resources: {}[]
+    programs: {}[],
+    course_assignments: {}[]
   }[] = []
 
   private coursesStatus = "idle"
@@ -55,8 +56,8 @@ export class CoursesService {
 
   getStatus = () => this.coursesStatus
 
-  getCourseAssignmentStatus = () => this.courseStatus
-  setCourseAssignmentStatus = (status) => this.courseStatus = status
+  getCoursesStatus = () => this.courseStatus
+  setCourseStatus = (status) => this.courseStatus = status
 
   fetchEvent = new EventEmitter<string>()
 
