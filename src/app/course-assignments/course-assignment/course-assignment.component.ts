@@ -15,7 +15,8 @@ export class CourseAssignmentComponent implements OnInit {
     assignedOn: Date,
     dueOn: Date,
     title: string,
-    description: string
+    description: string,
+    program_id: number
   }
 
   constructor(
