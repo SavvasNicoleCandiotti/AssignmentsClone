@@ -20,7 +20,7 @@ import { ProgramsComponent } from './programs/programs.component';
 import { ProgramComponent } from './programs/program/program.component';
 import { ProgramDetailComponent } from './programs/program-detail/program-detail.component';
 import { CourseProgramsComponent } from './course-programs/course-programs.component';
-
+import { CourseAssignmentDetailsComponent } from './home/course-assignment-details/course-assignment-details.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -38,7 +38,8 @@ import { CourseProgramsComponent } from './course-programs/course-programs.compo
     ProgramsComponent,
     ProgramComponent,
     ProgramDetailComponent,
-    CourseProgramsComponent
+    CourseProgramsComponent,
+    CourseAssignmentDetailsComponent
   ],
   imports: [
     BrowserModule,

@@ -8,8 +8,31 @@
 
 
 }
+.cardContent {
+    max-height: 300px;
+}
+.is-three-quarters {
+    max-height: 200px;
+    overflow: scroll;
+}
 .is-one-quarter{
     display:flex;
     flex-direction: column;
     justify-content: flex-end;
+}
+.searchbardiv{
+    width: 90%;
+    display:flex;
+    justify-content: center;
+    align-items:center;
+}
+input{
+    padding-left: 10px;
+}
+
+.no-assignments{
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items:center;
 }

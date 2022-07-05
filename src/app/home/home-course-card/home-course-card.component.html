@@ -9,64 +9,80 @@
 						</span>
 				</button>
 		</header>
+		<div class = " searchbardiv container">
+			<svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" viewBox="0 0 54 54" viewBox="0 0 512 512">
+				<!--! Font Awesome Pro 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
+				<path
+					d="M500.3 443.7l-119.7-119.7c27.22-40.41 40.65-90.9 33.46-144.7C401.8 87.79 326.8 13.32 235.2 1.723C99.01-15.51-15.51 99.01 1.724 235.2c11.6 91.64 86.08 166.7 177.6 178.9c53.8 7.189 104.3-6.236 144.7-33.46l119.7 119.7c15.62 15.62 40.95 15.62 56.57 0C515.9 484.7 515.9 459.3 500.3 443.7zM79.1 208c0-70.58 57.42-128 128-128s128 57.42 128 128c0 70.58-57.42 128-128 128S79.1 278.6 79.1 208z" />
+			</svg>
+			<input class="input" type="text" placeholder=" Search Assignments">
+		</div>
 		<div class="card-content">
 				<div class="content">
 					<div class="columns">
 							<div class="column is-three-quarters">
+								<!-- <div *ngIf="course.course_assignments.length===0" class="no-assignments">
+									<h5>No Assignments</h5>
+									<p>There are no assignments available to view </p>
+								</div> -->
+								<!-- <div *ngIf="course.course_assignments.length !==0"> -->
+									<app-course-assignment-details *ngFor="let courseAssignment of course.course_assignments" [courseAssignment]="courseAssignment"></app-course-assignment-details>
+									<!-- <p>{{course.course_assignments | json}}</p> -->
+								<!-- </div> -->
 
-								<p>{{course | json}}</p>
-							Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec iaculis mauris.</div>
+
+						</div>
 							<div class="column is-one-quarter">
 								<a (click)="handleClick()">
 									<svg xmlns="http://www.w3.org/2000/svg" width="12px" height="12px" viewBox="0 0 54 54" viewBox="0 0 512 512">
 										<!--! Font Awesome Pro 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
 										<path
 											d="M421.7 220.3L188.5 453.4L154.6 419.5L158.1 416H112C103.2 416 96 408.8 96 400V353.9L92.51 357.4C87.78 362.2 84.31 368 82.42 374.4L59.44 452.6L137.6 429.6C143.1 427.7 149.8 424.2 154.6 419.5L188.5 453.4C178.1 463.8 165.2 471.5 151.1 475.6L30.77 511C22.35 513.5 13.24 511.2 7.03 504.1C.8198 498.8-1.502 489.7 .976 481.2L36.37 360.9C40.53 346.8 48.16 333.9 58.57 323.5L291.7 90.34L421.7 220.3zM492.7 58.75C517.7 83.74 517.7 124.3 492.7 149.3L444.3 197.7L314.3 67.72L362.7 19.32C387.7-5.678 428.3-5.678 453.3 19.32L492.7 58.75z" />
-									</svg> 
-								Assignments </a> 
+									</svg>
+								Assignments </a>
 								<br>
-								<a href="#" > 
+								<a href="#" >
 									<svg xmlns="http://www.w3.org/2000/svg"width="12px" height="12px" viewBox="0 0 54 54" viewBox="0 0 512 512">
 									<!--! Font Awesome Pro 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
 										<path
 											d="M224 256c70.7 0 128-57.31 128-128S294.7 0 224 0C153.3 0 96 57.31 96 128S153.3 256 224 256zM274.7 304H173.3c-95.73 0-173.3 77.6-173.3 173.3C0 496.5 15.52 512 34.66 512H413.3C432.5 512 448 496.5 448 477.3C448 381.6 370.4 304 274.7 304zM479.1 320h-73.85C451.2 357.7 480 414.1 480 477.3C480 490.1 476.2 501.9 470 512h138C625.7 512 640 497.6 640 479.1C640 391.6 568.4 320 479.1 320zM432 256C493.9 256 544 205.9 544 144S493.9 32 432 32c-25.11 0-48.04 8.555-66.72 22.51C376.8 76.63 384 101.4 384 128c0 35.52-11.93 68.14-31.59 94.71C372.7 243.2 400.8 256 432 256z" />
-									</svg> 
-								Students & Groups</a> 
+									</svg>
+								Students & Groups</a>
 								<br>
-								<a href="#"> 
+								<a href="#">
 									<svg xmlns="http://www.w3.org/2000/svg" width="12px" height="12px" viewBox="0 0 54 54" viewBox="0 0 512 512">
 										<!--! Font Awesome Pro 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
 										<path
 												d="M32 32C49.67 32 64 46.33 64 64V400C64 408.8 71.16 416 80 416H480C497.7 416 512 430.3 512 448C512 465.7 497.7 480 480 480H80C35.82 480 0 444.2 0 400V64C0 46.33 14.33 32 32 32zM160 224C177.7 224 192 238.3 192 256V320C192 337.7 177.7 352 160 352C142.3 352 128 337.7 128 320V256C128 238.3 142.3 224 160 224zM288 320C288 337.7 273.7 352 256 352C238.3 352 224 337.7 224 320V160C224 142.3 238.3 128 256 128C273.7 128 288 142.3 288 160V320zM352 192C369.7 192 384 206.3 384 224V320C384 337.7 369.7 352 352 352C334.3 352 320 337.7 320 320V224C320 206.3 334.3 192 352 192zM480 320C480 337.7 465.7 352 448 352C430.3 352 416 337.7 416 320V96C416 78.33 430.3 64 448 64C465.7 64 480 78.33 480 96V320z" />
-									</svg> 
-								Data</a> 
+									</svg>
+								Data</a>
 								<br>
-								<a (click)="showPrograms()"> 
+								<a (click)="showPrograms()">
 									<svg xmlns="http://www.w3.org/2000/svg" width="12px" height="12px" viewBox="0 0 54 54" viewBox="0 0 512 512">
 										<!--! Font Awesome Pro 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
 										<path
 											d="M144.3 32.04C106.9 31.29 63.7 41.44 18.6 61.29c-11.42 5.026-18.6 16.67-18.6 29.15l0 357.6c0 11.55 11.99 19.55 22.45 14.65c126.3-59.14 219.8 11 223.8 14.01C249.1 478.9 252.5 480 256 480c12.4 0 16-11.38 16-15.98V80.04c0-5.203-2.531-10.08-6.781-13.08C263.3 65.58 216.7 33.35 144.3 32.04zM557.4 61.29c-45.11-19.79-88.48-29.61-125.7-29.26c-72.44 1.312-118.1 33.55-120.9 34.92C306.5 69.96 304 74.83 304 80.04v383.1C304 468.4 307.5 480 320 480c3.484 0 6.938-1.125 9.781-3.328c3.925-3.018 97.44-73.16 223.8-14c10.46 4.896 22.45-3.105 22.45-14.65l.0001-357.6C575.1 77.97 568.8 66.31 557.4 61.29z" />
-									</svg> 
-									Programs 
+									</svg>
+									Programs
 									<svg xmlns="http://www.w3.org/2000/svg" class="ionicon"  width="12px" height="12px" viewBox="0 0 54 54" viewBox="0 0 512 512">
 										<title>Caret Down</title>
 										<path
 											d="M98 190.06l139.78 163.12a24 24 0 0036.44 0L414 190.06c13.34-15.57 2.28-39.62-18.22-39.62h-279.6c-20.5 0-31.56 24.05-18.18 39.62z" />
 									</svg>
-								</a> 
+								</a>
 								<br>
 								<div *ngIf="showProgramDropdown===true" class="dropdown is-active">
 									<div class="dropdown-menu" id="dropdown-menu" role="menu">
 										<div class="dropdown-content">
 											<div *ngFor="let program of course.programs">
-												<a 
+												<a
 													class="dropdown-item"
 													(click)="selectProgram(program.id)"
 												>
 													{{program.name}}
 												</a>
 											</div>
-												
+
 										</div>
 									</div>
 								</div>
