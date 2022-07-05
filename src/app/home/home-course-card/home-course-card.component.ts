@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 
 
 @Component({
@@ -8,15 +9,15 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class HomeCourseCardComponent implements OnInit {
   @Input() course;
-  showProgramDropdown:boolean=false
+  showProgramDropdown:boolean = false
  
-  constructor(){}
+  constructor(private route : ActivatedRoute, private router: Router){}
   
   ngOnInit(): void {
   }
 
   handleClick(){
-    console.log(this.course)
+    this.router.navigate(['/courses', this.course.id, "course_assignments"])
   }
     
   showPrograms(){
@@ -24,6 +25,8 @@ export class HomeCourseCardComponent implements OnInit {
   }
   
   selectProgram = (id) => {
-    console.log("selected program has an id ", id)
+    this.router.navigate(['/programs', id])
   }
+
+  selectCourseAssignment = (id) => this.router.navigate(['/courses', this.course.id, 'course_assignments', id])
 }
