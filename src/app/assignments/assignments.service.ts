@@ -1,13 +1,22 @@
 import { EventEmitter, Injectable } from '@angular/core';
-import {HttpClient} from '@angular/common/http'
+import {HttpClient, HttpHeaders} from '@angular/common/http'
+import { AssignmentInterface } from './AssignmentInterface';
+import { Observable } from 'rxjs';
+// set headers for post and patch
+const httpOptions = {
+  headers: new HttpHeaders({
+    'Content-Type': "application/json"
+  })
+}
 
 @Injectable({
   providedIn: 'root'
 })
 export class AssignmentsService {
+  private apiUrl = 'http://localhost:3000/asssignments'
 
   private assignmentsArray : {
-    id: number, 
+    id: number,
     title: string,
     description: string
   }[] = []
@@ -27,11 +36,11 @@ export class AssignmentsService {
   }
 
   selectAssignmentEvent = new EventEmitter<{
-    id: number, 
+    id: number,
     title: string,
     description: string
   }>()
-  
+
   getAssignments = () => [...this.assignmentsArray];
 
   getAssignment = (id : number) => this.assignmentsArray.find(assignment => assignment.id === id)
@@ -45,9 +54,9 @@ export class AssignmentsService {
 
   addAssignment = (assignment) => {
     this.assignmentsArray = [
-      ...this.assignmentsArray, 
-      {...assignment, 
-        dueOn: new Date (assignment.dueOn), 
+      ...this.assignmentsArray,
+      {...assignment,
+        dueOn: new Date (assignment.dueOn),
         assignedOn: new Date(assignment.assignedOn)
       }
     ]
@@ -65,5 +74,9 @@ export class AssignmentsService {
   formatDate(date: string){
     return new Date(parseInt(date.slice(0, 4)), parseInt(date.slice(5, 7)), parseInt(date.slice(8, 10)))
  }
+//  post request
+postAssignment(assignment: AssignmentInterface): Observable<AssignmentInterface> {
+return this.http.post<AssignmentInterface>(this.apiUrl, assignment, httpOptions)
+}
 
 }
