@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ProgramsServiceService } from '../programs-service.service';
+import { AssignmentsService} from "../../assignments/assignments.service"
 
 @Component({
   selector: 'app-program-detail',
@@ -21,6 +22,7 @@ showCreateAssignmentModal:boolean = false
 
   constructor(
     private programsService : ProgramsServiceService,
+    private assignmentsService: AssignmentsService,
     private route : ActivatedRoute,
     private router : Router
   ) {}
