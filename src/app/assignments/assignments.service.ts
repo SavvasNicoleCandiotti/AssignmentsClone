@@ -44,7 +44,7 @@ export class AssignmentsService {
   }>()
 
   selectProgramAssignmentEvent = new EventEmitter<{
-    id: number, 
+    id: number,
     title: string,
     description: string,
     program_id: number
@@ -57,8 +57,8 @@ export class AssignmentsService {
   setAssignments = (array) => {
     this.assignmentsArray = array.map(assignment => {
       return {
-        ...assignment, 
-        dueOn: new Date (assignment.dueOn), 
+        ...assignment,
+        dueOn: new Date (assignment.dueOn),
         assignedOn: new Date(assignment.assignedOn)
       }
     })
