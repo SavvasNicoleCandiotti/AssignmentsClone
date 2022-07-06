@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CourseAssignmentsService } from '../course-assignments.service';
+import { CourseAssignmentInterface } from '../CourseAssignmentInterface';
 
 @Component({
   selector: 'app-course-assignment',
@@ -8,16 +9,7 @@ import { CourseAssignmentsService } from '../course-assignments.service';
   styleUrls: ['./course-assignment.component.css']
 })
 export class CourseAssignmentComponent implements OnInit {
-  @Input() courseAssignment : {
-    id: number, 
-    course_id: number, 
-    assignment_id: number,
-    assignedOn: Date,
-    dueOn: Date,
-    title: string,
-    description: string,
-    program_id: number
-  }
+  @Input() courseAssignment : CourseAssignmentInterface
 
   constructor(
     private courseAssignmentsService : CourseAssignmentsService,
