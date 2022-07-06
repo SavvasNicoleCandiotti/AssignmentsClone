@@ -1,8 +1,10 @@
 import { Component, OnInit, Output, EventEmitter, Input, enableProdMode } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
+import { Assignment, AssignmentInd } from '@material-ui/icons';
 import {AssignmentInterface} from "../AssignmentInterface"
 import { AssignmentsService } from '../assignments.service';
+
 
 
 
@@ -40,14 +42,14 @@ export class CreateAssignmentModalComponent implements OnInit {
     this.modalBtnClick.emit()
   }
 
-  submitModalForm(e:Event, value:AssignmentInterface){
-    e.preventDefault()
+  submitModalForm(value:AssignmentInterface){
     // this neeeds to take in an assignment
-    this.onAddAssignment.emit({title: value.title, description: value.description, program_id: this.program_id})
-
-    console.log(this.modalForm.value)
-    console.log(this.program_id)
-    console.log("form submitted")
+    // this.onAddAssignment.emit(value)
+    this.assignmentsService.postAssignment(value).subscribe(assignment => this.assignmentsService.addAssignment(assignment));
+    this.assignmentsService.getSubjectData(value)
+    // console.log(this.modalForm.value)
+    // console.log(this.program_id)
+    // console.log("form submitted")
     // reset values once form is submitted - is there a reset method on forms?
     // this.modalForm.reset()
 
