@@ -15,12 +15,7 @@ const httpOptions = {
 export class AssignmentsService {
   private apiUrl = 'http://localhost:3000/assignments'
 
-  private assignmentsArray : {
-    id: number,
-    title: string,
-    description: string
-    program_id: number
-  }[] = []
+  private assignmentsArray : AssignmentInterface[] = []
 
   private assignmentsStatus = "idle"
   public assignmentStatus = "idle"
@@ -36,19 +31,9 @@ export class AssignmentsService {
     return this.http.get('http://localhost:3000/course_assignments/' + id);
   }
 
-  selectAssignmentEvent = new EventEmitter<{
-    id: number,
-    title: string,
-    description: string,
-    program_id: number
-  }>()
+  selectAssignmentEvent = new EventEmitter<AssignmentInterface>()
 
-  selectProgramAssignmentEvent = new EventEmitter<{
-    id: number,
-    title: string,
-    description: string,
-    program_id: number
-  }>()
+  selectProgramAssignmentEvent = new EventEmitter<AssignmentInterface>()
 
   getAssignments = () => [...this.assignmentsArray];
 
@@ -56,22 +41,12 @@ export class AssignmentsService {
 
   setAssignments = (array) => {
     this.assignmentsArray = array.map(assignment => {
-      return {
-        ...assignment,
-        dueOn: new Date (assignment.dueOn),
-        assignedOn: new Date(assignment.assignedOn)
-      }
+      return {...assignment}
     })
   }
 
   addAssignment = (assignment) => {
-    this.assignmentsArray = [
-      ...this.assignmentsArray,
-      {...assignment,
-        dueOn: new Date (assignment.dueOn),
-        assignedOn: new Date(assignment.assignedOn)
-      }
-    ]
+    this.assignmentsArray = [...this.assignmentsArray, assignment]
   }
 
   setStatus = (status) => this.assignmentsStatus = status
@@ -85,11 +60,8 @@ export class AssignmentsService {
 
   filterAssignmentsByProgram = (id : number) => this.assignmentsArray.filter(assignment => assignment.program_id === id)
 
-  formatDate(date: string){
-    return new Date(parseInt(date.slice(0, 4)), parseInt(date.slice(5, 7)), parseInt(date.slice(8, 10)))
+  //  post request
+  postAssignment(assignment: AssignmentInterface): Observable<AssignmentInterface> {
+    return this.http.post<AssignmentInterface>(this.apiUrl, assignment, httpOptions)
   }
-//  post request
-postAssignment(assignment: AssignmentInterface): Observable<AssignmentInterface> {
-  return this.http.post<AssignmentInterface>(this.apiUrl, assignment, httpOptions)
-}
 }
