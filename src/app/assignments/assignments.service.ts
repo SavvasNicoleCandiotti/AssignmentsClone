@@ -13,7 +13,7 @@ const httpOptions = {
   providedIn: 'root'
 })
 export class AssignmentsService {
-  private apiUrl = 'http://localhost:3000/asssignments'
+  private apiUrl = 'http://localhost:3000/assignments'
 
   private assignmentsArray : {
     id: number,
