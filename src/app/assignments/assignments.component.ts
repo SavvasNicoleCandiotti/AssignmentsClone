@@ -1,7 +1,5 @@
 import { Component, OnInit, Output } from '@angular/core';
 import { AssignmentsService } from './assignments.service';
-import { Assignment } from './assignment.model';
-import { subscribeOn } from 'rxjs';
 import { AssignmentInterface } from './AssignmentInterface';
 
 @Component({
@@ -18,10 +16,12 @@ export class AssignmentsComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    //this shows all assignments including assignments newly added to the array but messes up the spinner
+    this.assignmentsService.getAssignmentsTest().subscribe(r=>this.assignmentsArray = r)
 
     this.assignmentsService.fetchEvent
       .subscribe(status => this.status = status);
-    
+
     this.status = this.assignmentsService.getStatus()
     if(this.status === "success"){
         this.assignmentsArray = this.assignmentsService.getAssignments()
@@ -35,13 +35,31 @@ export class AssignmentsComponent implements OnInit {
     this.assignmentsService.setStatus("loading")
     this.assignmentsService.fetchEvent.emit("loading")
 
+    // for the spinner
     setTimeout(
-      () => this.assignmentsService.fetchAllAssignments().subscribe((r)=>{
-        this.assignmentsService.setAssignments(r)
-        this.assignmentsArray = this.assignmentsService.getAssignments()
-        this.assignmentsService.setStatus("success")
-        this.assignmentsService.fetchEvent.emit("success")
-        console.log("Fetched")
-      }), 1000) 
+      () =>  this.assignmentsService.getAssignmentsTest().subscribe(r=> {
+      this.assignmentsService.setAssignments(r)
+      this.assignmentsArray = this.assignmentsService.getAssignments()
+      this.assignmentsService.setStatus("success")
+      this.assignmentsService.fetchEvent.emit("success")
+      console.log("r", r)
+      console.log(this.assignmentsArray)
+    }), 1000)
+
   }
+      // posting assignment from createAssignmentModalComponent
+    addAssignment(assignment: AssignmentInterface){
+      this.assignmentsService.setStatus("loading")
+      this.assignmentsService.fetchEvent.emit("loading")
+      // this posts assignment
+      this.assignmentsService.postAssignment(assignment).subscribe(assignment => {
+        //adds assignment in service
+      this.assignmentsService.addAssignment(assignment)
+        //sets local
+      this.assignmentsArray = this.assignmentsService.getAssignments()
+      this.assignmentsService.setStatus("success")
+      this.assignmentsService.fetchEvent.emit("success")
+      })
+  }
+
 }
