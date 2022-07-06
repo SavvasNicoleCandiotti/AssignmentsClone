@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { AssignmentInterface } from 'src/app/assignments/AssignmentInterface';
 import { AssignmentsService } from 'src/app/assignments/assignments.service';
 
 @Component({
@@ -8,12 +9,7 @@ import { AssignmentsService } from 'src/app/assignments/assignments.service';
 })
 export class ProgramAssignmentDetailComponent implements OnInit {
 
-  @Input() programAssignment : {
-    id: number, 
-    title: string,
-    description: string,
-    program_id: number
-  }
+  @Input() programAssignment : AssignmentInterface
 
   constructor(private assignmentsService: AssignmentsService) { }
 

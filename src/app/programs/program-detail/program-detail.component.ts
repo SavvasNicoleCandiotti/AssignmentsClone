@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { AssignmentInterface } from 'src/app/assignments/AssignmentInterface';
 import { AssignmentsService } from 'src/app/assignments/assignments.service';
+import { ProgramInterface } from '../ProgramInterface';
 import { ProgramsServiceService } from '../programs-service.service';
 
 @Component({
@@ -11,21 +13,10 @@ import { ProgramsServiceService } from '../programs-service.service';
 export class ProgramDetailComponent implements OnInit {
 
   showCreateAssignmentModal : boolean = false
-  public program: {
-    id: number,
-    name: string,
-    gradeLevel: number,
-    is_common_core: boolean,
-    subject: string
-  }
+  public program: ProgramInterface
 
   public status : string = "idle"
-  programAssignment : {
-    id: number, 
-    title: string,
-    description: string,
-    program_id: number
-  }
+  programAssignment : AssignmentInterface
 
   constructor(
     private programsService : ProgramsServiceService,

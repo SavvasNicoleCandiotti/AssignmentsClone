@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable, EventEmitter } from '@angular/core';
+import { ProgramInterface } from './ProgramInterface';
 
 
 @Injectable({
@@ -7,13 +8,7 @@ import { Injectable, EventEmitter } from '@angular/core';
 })
 export class ProgramsServiceService {
 
-  private programsArray : {
-    id: number,
-    name: string,
-    gradeLevel: number,
-    is_common_core: boolean,
-    subject: string
-  }[] = []
+  private programsArray : ProgramInterface[] = []
 
   private programsStatus = "idle"
   public programStatus = "idle"
@@ -31,13 +26,7 @@ export class ProgramsServiceService {
 
    }
 
-   selectProgramEvent = new EventEmitter<{
-    id: number,
-    name: string,
-    gradeLevel: number,
-    is_common_core: boolean,
-    subject: string
-  }>()
+   selectProgramEvent = new EventEmitter<ProgramInterface>()
   
   getPrograms = () => [...this.programsArray];
 

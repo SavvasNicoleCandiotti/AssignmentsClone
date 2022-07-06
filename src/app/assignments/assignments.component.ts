@@ -2,6 +2,7 @@ import { Component, OnInit, Output } from '@angular/core';
 import { AssignmentsService } from './assignments.service';
 import { Assignment } from './assignment.model';
 import { subscribeOn } from 'rxjs';
+import { AssignmentInterface } from './AssignmentInterface';
 
 @Component({
   selector: 'app-assignments',
@@ -9,11 +10,7 @@ import { subscribeOn } from 'rxjs';
   styleUrls: ['./assignments.component.css']
 })
 export class AssignmentsComponent implements OnInit {
-  assignmentsArray:{
-    id: number, 
-    title: string,
-    description: string
-  }[] = []
+  assignmentsArray:AssignmentInterface[] = []
 
   public status : string = "idle"
 

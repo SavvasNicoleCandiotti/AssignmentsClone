@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AssignmentsService } from '../assignments/assignments.service';
+import { ProgramInterface } from './ProgramInterface';
 import { ProgramsServiceService } from './programs-service.service';
 
 @Component({
@@ -9,12 +10,7 @@ import { ProgramsServiceService } from './programs-service.service';
 })
 export class ProgramsComponent implements OnInit {
 
-  programsArray:{
-    id: number, 
-    name: string,
-    gradeLevel: number,
-    is_common_core: boolean
-  }[] = []
+  programsArray:ProgramInterface[] = []
 
   public status : string = "idle"
   public programAssignmentSelected : boolean = false

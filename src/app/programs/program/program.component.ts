@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ProgramInterface } from '../ProgramInterface';
 import { ProgramsServiceService } from '../programs-service.service';
 
 @Component({
@@ -9,13 +10,7 @@ import { ProgramsServiceService } from '../programs-service.service';
 })
 export class ProgramComponent implements OnInit {
 
-  @Input() program : {
-    id: number, 
-    name: string,
-    gradeLevel: number,
-    is_common_core: boolean,
-    subject: string
-  }
+  @Input() program : ProgramInterface
 
   constructor(
     private programsService : ProgramsServiceService,
