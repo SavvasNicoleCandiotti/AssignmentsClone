@@ -1,11 +1,12 @@
 <section>
     <div class="columns">
         <div class="column is-one-quarter">
-            <p>list of assignments</p>
+            <app-program-assignments></app-program-assignments>
         </div>
         <div class="column is-three-quarters">
             <p>Search area</p>
-            <p>Grid of assignment cards</p>
+            <app-program-assignment-detail
+            *ngIf="programAssignment"></app-program-assignment-detail>
         </div>
     </div>
     <br>
