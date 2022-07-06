@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { AssignmentsService } from 'src/app/assignments/assignments.service';
 import { ProgramsServiceService } from '../programs-service.service';
 import { AssignmentsService} from "../../assignments/assignments.service"
 
@@ -9,7 +10,8 @@ import { AssignmentsService} from "../../assignments/assignments.service"
   styleUrls: ['./program-detail.component.css']
 })
 export class ProgramDetailComponent implements OnInit {
-showCreateAssignmentModal:boolean = false
+
+  showCreateAssignmentModal : boolean = false
   public program: {
     id: number,
     name: string,
@@ -19,6 +21,12 @@ showCreateAssignmentModal:boolean = false
   }
 
   public status : string = "idle"
+  programAssignment : {
+    id: number, 
+    title: string,
+    description: string,
+    program_id: number
+  }
 
   constructor(
     private programsService : ProgramsServiceService,
@@ -45,6 +53,7 @@ showCreateAssignmentModal:boolean = false
     this.program = this.programsService.getProgram(
       parseInt(this.route.snapshot.params['id'])
     )
+    this.assignmentsService.selectProgramAssignmentEvent.subscribe(programAssignment => this.programAssignment = programAssignment)
   }
   toggleModal(){
     this.showCreateAssignmentModal = !this.showCreateAssignmentModal

@@ -11,7 +11,8 @@ export class AssignmentComponent implements OnInit {
   @Input() assignment : {
     id: number, 
     title: string,
-    description: string
+    description: string,
+    program_id: number
   }
 
   constructor(

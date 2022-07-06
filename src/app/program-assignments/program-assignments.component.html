@@ -1,0 +1,13 @@
+<h1 class="subtitle">
+    Assignments
+</h1>
+<div *ngIf="status != 'loading'; else loading">
+    <app-program-assignment 
+        *ngFor="let programAssignment of programAssignmentsArray" 
+        [programAssignment]="programAssignment"
+    ></app-program-assignment>
+</div>
+<ng-template #loading>
+    <br>
+    <span class="loader"></span>      
+</ng-template>
