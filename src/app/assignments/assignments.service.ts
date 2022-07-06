@@ -10,6 +10,7 @@ export class AssignmentsService {
     id: number, 
     title: string,
     description: string
+    program_id: number
   }[] = []
 
   private assignmentsStatus = "idle"
@@ -29,7 +30,15 @@ export class AssignmentsService {
   selectAssignmentEvent = new EventEmitter<{
     id: number, 
     title: string,
-    description: string
+    description: string,
+    program_id: number
+  }>()
+
+  selectProgramAssignmentEvent = new EventEmitter<{
+    id: number, 
+    title: string,
+    description: string,
+    program_id: number
   }>()
   
   getAssignments = () => [...this.assignmentsArray];
@@ -38,9 +47,12 @@ export class AssignmentsService {
 
   setAssignments = (array) => {
     this.assignmentsArray = array.map(assignment => {
-      return {...assignment, dueOn: new Date (assignment.dueOn), assignedOn: new Date(assignment.assignedOn)}
+      return {
+        ...assignment, 
+        dueOn: new Date (assignment.dueOn), 
+        assignedOn: new Date(assignment.assignedOn)
+      }
     })
-    console.log(this.assignmentsArray)
   }
 
   addAssignment = (assignment) => {
@@ -62,8 +74,6 @@ export class AssignmentsService {
 
   fetchEvent = new EventEmitter<string>()
 
-  formatDate(date: string){
-    return new Date(parseInt(date.slice(0, 4)), parseInt(date.slice(5, 7)), parseInt(date.slice(8, 10)))
- }
+  filterAssignmentsByProgram = (id : number) => this.assignmentsArray.filter(assignment => assignment.program_id === id)
 
 }
