@@ -1,0 +1,14 @@
+.assignment-tile {
+    border: 1px solid;
+    border-color: gray;
+    border-radius: 4px;
+    padding: 2px;
+    margin: 4px;
+}
+
+.assignment-title {
+    text-align: left;
+    display: flex;
+    align-items: top;
+    font-weight: bold;
+}
