@@ -46,6 +46,6 @@ export class HomeComponent implements OnInit {
         this.coursesService.setStatus("success")
         this.coursesService.fetchEvent.emit(this.coursesService.getStatus())
         console.log("Fetched")
-      }), 1000) 
+      }), 1000)
   }
 }
