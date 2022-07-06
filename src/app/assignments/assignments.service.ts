@@ -79,8 +79,8 @@ export class AssignmentsService {
   formatDate(date: string){
     return new Date(parseInt(date.slice(0, 4)), parseInt(date.slice(5, 7)), parseInt(date.slice(8, 10)))
   }
-  //  post request
-  postAssignment(assignment: AssignmentInterface): Observable<AssignmentInterface> {
-    return this.http.post<AssignmentInterface>(this.apiUrl, assignment, httpOptions)
-  }
+//  post request
+postAssignment(assignment: AssignmentInterface): Observable<AssignmentInterface> {
+  return this.http.post<AssignmentInterface>(this.apiUrl, assignment, httpOptions)
+}
 }
