@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AssignmentsService } from '../assignments/assignments.service';
 import { ProgramsServiceService } from './programs-service.service';
 
 @Component({
@@ -16,6 +17,7 @@ export class ProgramsComponent implements OnInit {
   }[] = []
 
   public status : string = "idle"
+  public programAssignmentSelected : boolean = false
 
   constructor(private programsService : ProgramsServiceService) {
   }
