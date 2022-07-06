@@ -1,7 +1,7 @@
 import { EventEmitter, Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http'
 import { AssignmentInterface } from './AssignmentInterface';
-import { Observable } from 'rxjs';
+import { Observable, BehaviorSubject } from 'rxjs';
 // set headers for post and patch
 const httpOptions = {
   headers: new HttpHeaders({
@@ -16,6 +16,9 @@ export class AssignmentsService {
   private apiUrl = 'http://localhost:3000/assignments'
 
   private assignmentsArray : AssignmentInterface[] = []
+  private subject: BehaviorSubject<AssignmentInterface[]> = new BehaviorSubject<AssignmentInterface[]>(
+    [...this.assignmentsArray]
+  );
 
   private assignmentsStatus = "idle"
   public assignmentStatus = "idle"
@@ -40,9 +43,7 @@ export class AssignmentsService {
   getAssignment = (id : number) => this.assignmentsArray.find(assignment => assignment.id === id)
 
   setAssignments = (array) => {
-    this.assignmentsArray = array.map(assignment => {
-      return {...assignment}
-    })
+    this.assignmentsArray = array
   }
 
   addAssignment = (assignment) => {
@@ -60,8 +61,18 @@ export class AssignmentsService {
 
   filterAssignmentsByProgram = (id : number) => this.assignmentsArray.filter(assignment => assignment.program_id === id)
 
+  //test if writing get req as observable
+  getAssignmentsTest(): Observable<AssignmentInterface[]>{
+    return this.http.get<AssignmentInterface[]>(this.apiUrl)
+  }
+
   //  post request
   postAssignment(assignment: AssignmentInterface): Observable<AssignmentInterface> {
     return this.http.post<AssignmentInterface>(this.apiUrl, assignment, httpOptions)
+  }
+
+  //subject methods
+  getSubjectData(assignment:AssignmentInterface):Observable<AssignmentInterface[]> {
+    return this.subject
   }
 }
