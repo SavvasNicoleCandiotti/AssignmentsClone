@@ -5,10 +5,7 @@
     </div>
     <div class="columns">
         <div class="column">
-            <!-- form ---------------------------------------->
-            <!--  -->
-            <p>program_id: {{program_id}}</p>
-             <form [formGroup]="modalForm" (ngSubmit)="submitModalForm($event, modalForm.value)" >
+             <form [formGroup]="modalForm" (ngSubmit)="submitModalForm(modalForm.value)" >
                 <label class="label" for="title">Assignment name:</label>
                 <input  class="input" type="text" formControlName="title" placeholder="assignment name">
                 <br>
@@ -19,18 +16,14 @@
             <p class="warning" *ngIf="charsRemaining <=0">Description is >500 Characters</p>
 
                 <br>
-                <!-- <input type="number" value="{{randomTestNumber}}" formControlName="randomTestNumber"  >
-                <input type="number" value="{{program_id}}" formControlName="program_id"  > -->
                  <button [disabled]="!modalForm.valid" class="button" type="submit">
                     Add Assignment to Program
                 </button>
                 <br>
-                Form Data: {{modalForm.value | json}}
             </form>
-            <!-- end form -------------------------------------->
         </div>
         <div class="column">
-            <img src="../../../assets/assignmentThumbnail.png" alt="course icon" />
+            <img src="../../../assets/icon4.png" alt="course icon" />
         </div>
     </div>
 </div>
