@@ -29,7 +29,7 @@ export class ProgramDetailComponent implements OnInit {
 
   constructor(
     private programsService : ProgramsServiceService,
-    private assignmentsService : AssignmentsService,
+    private assignmentsService: AssignmentsService,
     private route : ActivatedRoute,
     private router : Router
   ) {}
