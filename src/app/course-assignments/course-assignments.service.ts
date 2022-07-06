@@ -1,21 +1,13 @@
 import { Injectable, EventEmitter } from '@angular/core';
 import {HttpClient} from '@angular/common/http'
+import { CourseAssignmentInterface } from './CourseAssignmentInterface';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CourseAssignmentsService {
 
-  private courseAssignmentsArray : {
-    id: number, 
-    course_id: number, 
-    assignment_id: number,
-    assignedOn: Date,
-    dueOn: Date,
-    title: string,
-    description: string,
-    program_id: number
-  }[] = []
+  private courseAssignmentsArray : CourseAssignmentInterface[] = []
 
   private courseAssignmentsStatus = "idle"
   public courseAssignmentStatus = "idle"
@@ -31,16 +23,7 @@ export class CourseAssignmentsService {
     return this.http.get('http://localhost:3000/course_assignments/' + id);
   }
 
-  selectCourseAssignmentEvent = new EventEmitter<{
-    id: number, 
-    course_id: number, 
-    assignment_id: number,
-    assignedOn: Date,
-    dueOn: Date,
-    title: string,
-    description: string,
-    program_id: number
-  }>()
+  selectCourseAssignmentEvent = new EventEmitter<CourseAssignmentInterface>()
   
   getCourseAssignments = () => [...this.courseAssignmentsArray];
 
