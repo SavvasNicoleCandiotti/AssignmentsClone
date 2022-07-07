@@ -3,7 +3,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { Assignment, AssignmentInd } from '@material-ui/icons';
 import {AssignmentInterface} from "../../models/AssignmentInterface"
-import { AssignmentsService } from '../assignments.service';
+import { AssignmentsService } from '../../services/assignments.service';
 
 
 

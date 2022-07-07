@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AssignmentsService } from '../assignments/assignments.service';
+import { AssignmentsService } from '../services/assignments.service';
 import { ProgramInterface } from './ProgramInterface';
 import { ProgramsServiceService } from './programs-service.service';
 

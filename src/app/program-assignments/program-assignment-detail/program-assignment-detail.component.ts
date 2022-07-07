@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { AssignmentInterface } from 'src/app/models/AssignmentInterface';
-import { AssignmentsService } from 'src/app/assignments/assignments.service';
+import { AssignmentsService } from 'src/app/services/assignments.service';
 
 @Component({
   selector: 'app-program-assignment-detail',
