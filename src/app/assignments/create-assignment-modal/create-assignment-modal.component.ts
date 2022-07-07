@@ -2,7 +2,7 @@ import { Component, OnInit, Output, EventEmitter, Input, enableProdMode } from '
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { Assignment, AssignmentInd } from '@material-ui/icons';
-import {AssignmentInterface} from "../AssignmentInterface"
+import {AssignmentInterface} from "../../models/AssignmentInterface"
 import { AssignmentsService } from '../assignments.service';
 
 
@@ -45,18 +45,21 @@ export class CreateAssignmentModalComponent implements OnInit {
   submitModalForm(value:AssignmentInterface){
     // this neeeds to take in an assignment
     // this.onAddAssignment.emit(value)
-    this.assignmentsService.postAssignment(value).subscribe(assignment => this.assignmentsService.addAssignment(assignment));
-    this.assignmentsService.getSubjectData(value)
-    // console.log(this.modalForm.value)
-    // console.log(this.program_id)
-    // console.log("form submitted")
+    this.assignmentsService.postAssignment(value).subscribe(assignment => {
+      this.assignmentsService.addAssignment(assignment)
+      //the event needs to be emitted inside this code block, it doesn't work below it
+      this.assignmentsService.postEvent.emit()
+    });
+
     // reset values once form is submitted - is there a reset method on forms?
-    // this.modalForm.reset()
+    this.modalForm.reset()
+
 
     // closes modal once form is submitted
      this.modalBtnClick.emit()
   }
+
   // sets length for character limit
   setLength(event){
- this.charsRemaining = 500 - event.length}
+    this.charsRemaining = 500 - event.length}
   }

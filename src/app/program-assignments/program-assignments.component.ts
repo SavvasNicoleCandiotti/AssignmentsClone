@@ -12,6 +12,7 @@ export class ProgramAssignmentsComponent implements OnInit {
   programAssignmentsArray : {}[]
 
   public status : string = "idle"
+  public program_id: number = parseInt(this.route.snapshot.params['id'])
 
   constructor(
     private assignmentsService : AssignmentsService,
@@ -23,6 +24,12 @@ export class ProgramAssignmentsComponent implements OnInit {
     this.assignmentsService.fetchEvent
       .subscribe(status => this.status = status);
 
+    this.assignmentsService.postEvent.subscribe(() => {
+      this.programAssignmentsArray = this.assignmentsService.filterAssignmentsByProgram(
+      this.program_id)
+      console.log("Didn't fetch")
+    })
+
     this.status = this.assignmentsService.getStatus()
     if(this.status === "success"){
         this.programAssignmentsArray = this.assignmentsService.filterAssignmentsByProgram(
@@ -31,7 +38,6 @@ export class ProgramAssignmentsComponent implements OnInit {
           console.log("Didn't fetch")
       }else if(this.status === "idle"){
         this.getAllProgramAssignments()
-
       }
   }
 

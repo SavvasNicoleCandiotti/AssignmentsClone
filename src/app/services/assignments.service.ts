@@ -1,6 +1,6 @@
 import { EventEmitter, Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http'
-import { AssignmentInterface } from './AssignmentInterface';
+import { AssignmentInterface } from '../models/AssignmentInterface';
 import { Observable, BehaviorSubject } from 'rxjs';
 // set headers for post and patch
 const httpOptions = {
@@ -32,21 +32,13 @@ export class AssignmentsService {
     return this.http.get('http://localhost:3000/course_assignments/' + id);
   }
 
-  selectAssignmentEvent = new EventEmitter<AssignmentInterface>()
-
-  selectProgramAssignmentEvent = new EventEmitter<AssignmentInterface>()
-
   getAssignments = () => [...this.assignmentsArray];
 
   getAssignment = (id : number) => this.assignmentsArray.find(assignment => assignment.id === id)
 
-  setAssignments = (array) => {
-    this.assignmentsArray = array
-  }
+  setAssignments = (array) => this.assignmentsArray = array
 
-  addAssignment = (assignment) => {
-    this.assignmentsArray = [...this.assignmentsArray, assignment]
-  }
+  addAssignment = (assignment) => this.assignmentsArray = [...this.assignmentsArray, assignment]
 
   setStatus = (status) => this.assignmentsStatus = status
 
@@ -56,6 +48,9 @@ export class AssignmentsService {
   setAssignmentStatus = (status) => this.assignmentStatus = status
 
   fetchEvent = new EventEmitter<string>()
+  postEvent = new EventEmitter<void>()
+  selectAssignmentEvent = new EventEmitter<AssignmentInterface>()
+  selectProgramAssignmentEvent = new EventEmitter<AssignmentInterface>()
 
   filterAssignmentsByProgram = (id : number) => this.assignmentsArray.filter(assignment => assignment.program_id === id)
 
@@ -70,16 +65,16 @@ export class AssignmentsService {
   }
 
   //subject methods
- getSubjectData():Observable<AssignmentInterface[]>{
-  return this.assignmentsSubject.asObservable()
- }
+//  getSubjectData():Observable<AssignmentInterface[]>{
+//   return this.assignmentsSubject.asObservable()
+//  }
 
- setSubjectData(assignments: AssignmentInterface[]):void {
-  this.assignmentsSubject.next(assignments)
- }
+//  setSubjectData(assignments: AssignmentInterface[]):void {
+//   this.assignmentsSubject.next(assignments)
+//  }
 
- addAssignmentToSubject(assignment){
-  this.assignmentsSubject.next([...this.assignmentsSubject.getValue(), ...assignment])
- }
+//  addAssignmentToSubject(assignment){
+//   this.assignmentsSubject.next([...this.assignmentsSubject.getValue(), ...assignment])
+//  }
 
 }

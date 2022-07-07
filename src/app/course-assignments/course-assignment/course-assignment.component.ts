@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CourseAssignmentsService } from '../course-assignments.service';
-import { CourseAssignmentInterface } from '../CourseAssignmentInterface';
+import { CourseAssignmentInterface } from '../../models/CourseAssignmentInterface';
 
 @Component({
   selector: 'app-course-assignment',

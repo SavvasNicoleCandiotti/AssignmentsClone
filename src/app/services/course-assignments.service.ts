@@ -1,6 +1,6 @@
 import { Injectable, EventEmitter } from '@angular/core';
 import {HttpClient} from '@angular/common/http'
-import { CourseAssignmentInterface } from './CourseAssignmentInterface';
+import { CourseAssignmentInterface } from '../models/CourseAssignmentInterface';
 
 @Injectable({
   providedIn: 'root'

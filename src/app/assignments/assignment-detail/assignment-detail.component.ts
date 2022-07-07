@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AssignmentsService } from 'src/app/assignments/assignments.service';
-import { AssignmentInterface } from '../AssignmentInterface';
+import { AssignmentInterface } from '../../models/AssignmentInterface';
 
 @Component({
   selector: 'app-assignment-detail',

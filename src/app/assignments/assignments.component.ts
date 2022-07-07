@@ -1,7 +1,7 @@
-import { Component, OnInit, Output } from '@angular/core';
-import { AssignmentsService } from './assignments.service';
-import { AssignmentInterface } from './AssignmentInterface';
+import { Component, OnInit } from '@angular/core';
+import { AssignmentInterface } from '../models/AssignmentInterface';
 import { BehaviorSubject } from 'rxjs';
+import { AssignmentsService } from '../services/assignments.service';
 
 @Component({
   selector: 'app-assignments',
@@ -19,12 +19,12 @@ export class AssignmentsComponent implements OnInit {
 
   ngOnInit(): void {
     // NC messing w subject/observables/multicasting --------------
-    this.assignmentsService.getAssignmentsTest().subscribe(r=> {
-      //sets local
-      this.assignmentsSubject.next(r)
-      //sets in service
-      this.assignmentsService.setSubjectData(r)
-    })
+    // this.assignmentsService.getAssignmentsTest().subscribe(r=> {
+    //   //sets local
+    //   this.assignmentsSubject.next(r)
+    //   //sets in service
+    //   this.assignmentsService.setSubjectData(r)
+    // })
     //working for now -------------------------------------------
 
     //this shows all assignments including assignments newly added to the array but messes up the spinner

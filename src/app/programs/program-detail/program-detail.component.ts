@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { AssignmentInterface } from 'src/app/assignments/AssignmentInterface';
+import { AssignmentInterface } from 'src/app/models/AssignmentInterface';
 import { AssignmentsService } from 'src/app/assignments/assignments.service';
 import { ProgramInterface } from '../ProgramInterface';
 import { ProgramsServiceService } from '../programs-service.service';
