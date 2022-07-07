@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { AssignmentsService } from 'src/app/assignments/assignments.service';
+import { AssignmentsService } from 'src/app/services/assignments.service';
 
 @Component({
   selector: 'app-program-assignment',
@@ -10,14 +10,14 @@ import { AssignmentsService } from 'src/app/assignments/assignments.service';
 export class ProgramAssignmentComponent implements OnInit {
 
   @Input() programAssignment : {
-    id: number, 
+    id: number,
     title: string,
     description: string,
     program_id: number
   }
 
   constructor(
-    private assignmentsService : AssignmentsService
+    private assignmentsService: AssignmentsService
   ) {
    }
 
