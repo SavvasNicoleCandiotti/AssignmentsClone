@@ -16,9 +16,7 @@ export class AssignmentsService {
   private apiUrl = 'http://localhost:3000/assignments'
 
   private assignmentsArray : AssignmentInterface[] = []
-  private subject: BehaviorSubject<AssignmentInterface[]> = new BehaviorSubject<AssignmentInterface[]>(
-    [...this.assignmentsArray]
-  );
+  private assignmentsSubject = new BehaviorSubject<AssignmentInterface[]>([])
 
   private assignmentsStatus = "idle"
   public assignmentStatus = "idle"
@@ -72,7 +70,16 @@ export class AssignmentsService {
   }
 
   //subject methods
-  getSubjectData(assignment:AssignmentInterface):Observable<AssignmentInterface[]> {
-    return this.subject
-  }
+ getSubjectData():Observable<AssignmentInterface[]>{
+  return this.assignmentsSubject.asObservable()
+ }
+
+ setSubjectData(assignments: AssignmentInterface[]):void {
+  this.assignmentsSubject.next(assignments)
+ }
+
+ addAssignmentToSubject(assignment){
+  this.assignmentsSubject.next([...this.assignmentsSubject.getValue(), ...assignment])
+ }
+
 }

@@ -1,6 +1,7 @@
 import { Component, OnInit, Output } from '@angular/core';
 import { AssignmentsService } from './assignments.service';
 import { AssignmentInterface } from './AssignmentInterface';
+import { BehaviorSubject } from 'rxjs';
 
 @Component({
   selector: 'app-assignments',
@@ -9,6 +10,7 @@ import { AssignmentInterface } from './AssignmentInterface';
 })
 export class AssignmentsComponent implements OnInit {
   assignmentsArray:AssignmentInterface[] = []
+  assignmentsSubject = new BehaviorSubject<AssignmentInterface[]>([])
 
   public status : string = "idle"
 
@@ -16,8 +18,17 @@ export class AssignmentsComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    // NC messing w subject/observables/multicasting --------------
+    this.assignmentsService.getAssignmentsTest().subscribe(r=> {
+      //sets local
+      this.assignmentsSubject.next(r)
+      //sets in service
+      this.assignmentsService.setSubjectData(r)
+    })
+    //working for now -------------------------------------------
+
     //this shows all assignments including assignments newly added to the array but messes up the spinner
-    this.assignmentsService.getAssignmentsTest().subscribe(r=>this.assignmentsArray = r)
+    // this.assignmentsService.getAssignmentsTest().subscribe(r=>this.assignmentsArray = r)
 
     this.assignmentsService.fetchEvent
       .subscribe(status => this.status = status);
@@ -42,7 +53,9 @@ export class AssignmentsComponent implements OnInit {
       this.assignmentsArray = this.assignmentsService.getAssignments()
       this.assignmentsService.setStatus("success")
       this.assignmentsService.fetchEvent.emit("success")
-      console.log("r", r)
+      this.assignmentsSubject.next(this.assignmentsArray)
+      console.log("behavior subject value", this.assignmentsSubject.value)
+
       console.log(this.assignmentsArray)
     }), 1000)
 
@@ -57,6 +70,7 @@ export class AssignmentsComponent implements OnInit {
       this.assignmentsService.addAssignment(assignment)
         //sets local
       this.assignmentsArray = this.assignmentsService.getAssignments()
+      this.assignmentsSubject.next(this.assignmentsArray)
       this.assignmentsService.setStatus("success")
       this.assignmentsService.fetchEvent.emit("success")
       })
