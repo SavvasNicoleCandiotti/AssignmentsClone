@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AssignmentsService } from '../services/assignments.service';
-import { ProgramInterface } from './ProgramInterface';
-import { ProgramsServiceService } from './programs-service.service';
+import { ProgramInterface } from '../models/ProgramInterface';
+import { ProgramsServiceService } from '../services/programs-service.service';
 
 @Component({
   selector: 'app-programs',

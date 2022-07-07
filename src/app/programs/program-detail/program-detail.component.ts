@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AssignmentInterface } from 'src/app/models/AssignmentInterface';
 import { AssignmentsService } from 'src/app/services/assignments.service';
-import { ProgramInterface } from '../ProgramInterface';
-import { ProgramsServiceService } from '../programs-service.service';
+import { ProgramInterface } from '../../models/ProgramInterface';
+import { ProgramsServiceService } from '../../services/programs-service.service';
 
 @Component({
   selector: 'app-program-detail',

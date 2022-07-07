@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable, EventEmitter } from '@angular/core';
-import { ProgramInterface } from './ProgramInterface';
+import { ProgramInterface } from '../models/ProgramInterface';
 
 
 @Injectable({
