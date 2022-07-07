@@ -1,17 +1,17 @@
 <nav class="navbar" role="navigation" aria-label="main navigation">
     <div class="navbar-brand">
-      <a class="navbar-item" href="https://bulma.io">
+      <a class="navbar-item" routerLink="/">
         <img src="/assets/savvasLogo.png">
       </a>
-  
+
       <a role="button" (click)=handleToggle() class="navbar-burger {{activeString}}" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
         <span aria-hidden="true"></span>
         <span aria-hidden="true"></span>
         <span aria-hidden="true"></span>
       </a>
     </div>
-  
-    <div 
+
+    <div
         class="navbar-menu {{activeString}}"
         routerLinkActive="active"
         [routerLinkActiveOptions]="{exact: true}">
@@ -23,7 +23,7 @@
         <a class="navbar-item">
           Classes
         </a>
-  
+
         <a class="navbar-item" routerLink="/programs">
           Browse
         </a>
@@ -31,6 +31,6 @@
           Course Assignments
         </a>
       </div>
-  
+
     </div>
   </nav>
