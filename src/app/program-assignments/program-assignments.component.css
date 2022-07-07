@@ -1,0 +1,11 @@
+h1 {
+    padding-left: 5px;
+}
+div.subtitle {
+    display:flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 15px;
+    background: lightgray;
+}
+

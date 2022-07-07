@@ -1,0 +1,18 @@
+.column {
+    display:flex;
+    padding:10px;
+}
+.assignbutton {
+display:flex;
+justify-content: space-around;
+}
+
+.content {
+    display:flex;
+    flex-direction:row;
+    justify-content: space-evenly;
+}
+img {
+    border-radius:10px;
+    margin-right:10px
+}

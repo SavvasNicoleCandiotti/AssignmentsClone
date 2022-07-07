@@ -12,3 +12,9 @@
     align-items: top;
     font-weight: bold;
 }
+div.assignment-tile.columns {
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-right: 10px;
+}

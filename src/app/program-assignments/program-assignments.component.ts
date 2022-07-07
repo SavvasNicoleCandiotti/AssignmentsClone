@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { AssignmentsService } from '../services/assignments.service';
+import { faEllipsisVertical } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-program-assignments',
@@ -8,7 +9,7 @@ import { AssignmentsService } from '../services/assignments.service';
   styleUrls: ['./program-assignments.component.css']
 })
 export class ProgramAssignmentsComponent implements OnInit {
-
+  faEllipsisVertical=faEllipsisVertical
   programAssignmentsArray : {}[]
 
   public status : string = "idle"
@@ -55,6 +56,11 @@ export class ProgramAssignmentsComponent implements OnInit {
         this.assignmentsService.fetchEvent.emit("success")
         console.log("Fetched")
       }), 1000)
+  }
+
+
+  showCard(){
+    console.log('show card')
   }
 
 }

@@ -1,10 +1,22 @@
 <div class="card">
     <div class="card-content">
-        <p class="title is-4">{{programAssignment.title}}</p>
-  
-      <div class="content">
-        {{programAssignment.description}}
-      </div>
-      <button class="button">Assign to Course</button>
+
+
+      <div class="content columns">
+          <div class="column">
+             <img src="../../../assets/icon1.png" alt="">
+             <p class="title is-4">{{programAssignment.title}}</p>
+          </div>
+
+          <div class="column assignbutton is-two-fifths">
+            <button (click)="handleClick()"class="button is-info is-light">Assign to Course</button>
+            <fa-icon color="blue"[icon]="faEllipsisVertical"></fa-icon>
+          </div>
+
+
+          </div>
+          <p>{{programAssignment.description}}</p>
+          <hr>
     </div>
+    <hr>
   </div>
