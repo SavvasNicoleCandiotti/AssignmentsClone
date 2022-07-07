@@ -22,6 +22,7 @@ export class ProgramAssignmentDetailComponent implements OnInit {
   }
 
   handleClick(){
+    //this needs to open the model in program detail
     debugger
     this.toggleModal()
   }
