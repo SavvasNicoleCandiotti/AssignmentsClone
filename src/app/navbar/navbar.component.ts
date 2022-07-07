@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { NavbarService } from './navbar.service';
+import { NavbarService } from '../services/navbar.service';
 
 @Component({
   selector: 'app-navbar',
@@ -10,8 +10,8 @@ export class NavbarComponent implements OnInit {
 
   isActive = false
   activeString = this.isActive ? "is-active" : ""
-  
-  constructor(private navbarService : NavbarService) {
+
+  constructor(private navbarService: NavbarService) {
     this.navbarService.toggleEvent
     .subscribe(() => this.activeString = this.navbarService.getActiveStatus() ? "is-active" : "");
    }
