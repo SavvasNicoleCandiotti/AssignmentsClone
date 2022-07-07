@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { CourseAssignmentsService } from '../course-assignments.service';
+import { CourseAssignmentsService } from '../../services/course-assignments.service';
 import { CourseAssignmentInterface } from '../../models/CourseAssignmentInterface';
 
 @Component({
