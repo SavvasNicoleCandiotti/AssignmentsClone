@@ -1,11 +1,21 @@
 import { Injectable, EventEmitter } from '@angular/core';
-import {HttpClient} from '@angular/common/http'
+import {HttpClient, HttpHeaders} from '@angular/common/http'
 import { CourseAssignmentInterface } from '../models/CourseAssignmentInterface';
+import { CourseAssignmentInputInterface } from '../models/course-assignment-input-interface';
+import { Observable } from 'rxjs';
+
+const httpOptions = {
+  headers: new HttpHeaders({
+    'Content-Type': "application/json"
+  })
+}
 
 @Injectable({
   providedIn: 'root'
 })
 export class CourseAssignmentsService {
+
+  private apiUrl = 'http://localhost:3000/course_assignments'
 
   private courseAssignmentsArray : CourseAssignmentInterface[] = []
 
@@ -21,6 +31,11 @@ export class CourseAssignmentsService {
     // show route
   fetchCourseAssignment(id){
     return this.http.get('http://localhost:3000/course_assignments/' + id);
+  }
+
+  //  post request
+  postAssignment(assignment): Observable<CourseAssignmentInputInterface> {
+    return this.http.post<CourseAssignmentInputInterface>(this.apiUrl, assignment, httpOptions)
   }
 
   selectCourseAssignmentEvent = new EventEmitter<CourseAssignmentInterface>()

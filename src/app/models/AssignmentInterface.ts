@@ -3,5 +3,4 @@ export interface AssignmentInterface {
     title?:string;
     description?:string;
     program_id?:number
-
 }

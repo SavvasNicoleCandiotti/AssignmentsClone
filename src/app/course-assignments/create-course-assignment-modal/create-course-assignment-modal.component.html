@@ -10,6 +10,10 @@
                 <input  class="input" type="date" formControlName="assigned_on" placeholder="assigned on date">
                 <br>
                 <br>
+                <label class="label" for="due_on">Assign on:</label>
+                <input  class="input" type="date" formControlName="due_on" placeholder="due on date">
+                <br>
+                <br>
                 <label class="label" for="title">Assignment Description:</label>
                 <textarea (input)="setLength($event.target.value)"formControlName="description" value="description" class="textarea" placeholder="A Very Fun Assignment"></textarea>
                 <p>{{charsRemaining}} Characters Remaining</p>

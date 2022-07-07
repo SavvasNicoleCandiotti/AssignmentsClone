@@ -13,20 +13,17 @@ import { HttpService } from 'src/app/services/http.service';
   styleUrls: ['./create-course-assignment-modal.component.css']
 })
 export class CreateCourseAssignmentModalComponent implements OnInit {
-  @Input() assignment : AssignmentInterface
+  @Input() assignment : AssignmentInterface = {}
   @Input() showModal:boolean
   randomTestNumber = 5
   @Output() modalBtnClick = new EventEmitter()
   @Output() onAddAssignment: EventEmitter<CourseAssignmentInterface> = new EventEmitter()
 
   courseAssignmentForm = new FormGroup({
-    title: new FormControl(this.assignment.title, Validators.required),
-    description: new FormControl(this.assignment.description, [Validators.required, Validators.maxLength(500)]),
-    // does this have to be a form control since there's no user input? doesn't seem to work w/o form control
+    course_id: new FormControl(null, Validators.required),
     assignment_id: new FormControl(this.assignment.id, Validators.required),
-    assignedOn: new FormControl("", Validators.required),
-    dueOn: new FormControl("", Validators.required),
-    program_id: new FormControl(this.assignment.program_id, Validators.required)
+    assignedOn: new FormControl(Date, Validators.required),
+    dueOn: new FormControl(Date, Validators.required)
   });
 
   charsRemaining:number=500
@@ -48,7 +45,7 @@ export class CreateCourseAssignmentModalComponent implements OnInit {
     // this neeeds to take in an assignment
     // this.onAddAssignment.emit(value)
     this.courseAssignmentsService.postAssignment(value)
-    .subscribe((courseAssignment : CourseAssignmentInputInterface) => {
+    .subscribe((courseAssignment : CourseAssignmentInterface) => {
       this.courseAssignmentsService.addCourseAssignment(courseAssignment)
       //the event needs to be emitted inside this code block, it doesn't work below it
       this.httpService.postEvent.emit()
@@ -60,5 +57,8 @@ export class CreateCourseAssignmentModalComponent implements OnInit {
     // closes modal once form is submitted
      this.modalBtnClick.emit()
   }
+
+  setLength(event){
+    this.charsRemaining = 500 - event.length}
 
 }

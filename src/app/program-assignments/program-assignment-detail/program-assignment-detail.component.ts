@@ -10,6 +10,8 @@ import { faEllipsisVertical } from '@fortawesome/free-solid-svg-icons';
 })
 export class ProgramAssignmentDetailComponent implements OnInit {
   faEllipsisVertical=faEllipsisVertical
+  showCreateCourseAssignmentModal : boolean = false
+
 
   @Input() programAssignment : AssignmentInterface
 
@@ -20,7 +22,15 @@ export class ProgramAssignmentDetailComponent implements OnInit {
   }
 
   handleClick(){
-    console.log("assign button clicked")
+    debugger
+    this.toggleModal()
+  }
+
+  toggleModal(){
+    this.showCreateCourseAssignmentModal = !this.showCreateCourseAssignmentModal
+  }
+  closeModal(){
+  this.showCreateCourseAssignmentModal = false;
   }
 
 }

@@ -20,3 +20,6 @@
     </div>
     <hr>
   </div>
+
+  <app-create-course-assignment-modal [assignment]="programAssignment" [showModal]="showCreateCourseAssignmentModal" (modalBtnClick)="closeModal()" *ngIf="showCreateCourseAssignmentModal"></app-create-course-assignment-modal>
+
