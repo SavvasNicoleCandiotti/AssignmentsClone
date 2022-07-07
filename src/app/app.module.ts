@@ -2,6 +2,8 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -51,7 +53,7 @@ import { ProgramAssignmentDetailComponent } from './program-assignments/program-
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule, HttpClientModule, ReactiveFormsModule
+    AppRoutingModule, HttpClientModule, ReactiveFormsModule, FontAwesomeModule
 
   ],
   providers: [],
