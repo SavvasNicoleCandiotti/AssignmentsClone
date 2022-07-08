@@ -1,0 +1,21 @@
+.container {
+    line-height: 20px;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    min-height: 50vh;
+    min-width: 75vh;
+
+    z-index: 10;
+    padding: 20px 20px;
+    border-radius: 20px;
+    border: solid rgba(6, 75, 59);
+    margin-bottom: 20px;
+}
+header {
+    display:flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
