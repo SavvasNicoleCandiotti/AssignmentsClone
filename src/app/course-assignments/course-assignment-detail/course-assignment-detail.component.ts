@@ -27,6 +27,8 @@ export class CourseAssignmentDetailComponent implements OnInit {
     this.courseAssignmentsService.selectCourseAssignmentEvent
       .subscribe(courseAssignment => this.courseAssignment = courseAssignment);
 
+    this.courseAssignmentsService.updateEvent.subscribe(() => this.courseAssignment = this.courseAssignmentsService.getCourseAssignment(parseInt(this.route.snapshot.params['id'])))
+
     this.courseAssignmentsService.fetchEvent
       .subscribe(status => this.status = status);
 
