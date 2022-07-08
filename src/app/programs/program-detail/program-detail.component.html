@@ -24,7 +24,7 @@
     ></app-create-assignment-modal>
 </section>
 <app-create-course-assignment-modal    
-class=showCreateCourseAssignmentModal 
+[ngClass]="showCreateCourseAssignmentModal ? 'modal is-active' : 'modal is-closed'" 
 [assignment]="programAssignment"  
 *ngIf="showCreateCourseAssignmentModal"
 ></app-create-course-assignment-modal>
