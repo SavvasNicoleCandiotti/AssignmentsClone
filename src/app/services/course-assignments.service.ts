@@ -18,6 +18,7 @@ export class CourseAssignmentsService {
   private courseAssignmentsArray : CourseAssignmentInterface[] = []
   private courseAssignmentsStatus = "idle"
   public courseAssignmentStatus = "idle"
+  private selectedCourseAssignment : CourseAssignmentInterface
 
   constructor(private http: HttpClient) { }
   // index route
@@ -74,11 +75,16 @@ export class CourseAssignmentsService {
   getCourseAssignmentStatus = () => this.courseAssignmentStatus
   setCourseAssignmentStatus = (status) => this.courseAssignmentStatus = status
 
+  setSelectedCourseAssignment = (courseAssignment : CourseAssignmentInterface) => this.selectedCourseAssignment = courseAssignment
+  getSelectedCourseAssignment = () => this.selectedCourseAssignment
+  
   fetchEvent = new EventEmitter<string>()
   toggleModalEvent = new EventEmitter<boolean>()
 
   formatDate(date: string){
     return new Date(parseInt(date.slice(0, 4)), parseInt(date.slice(5, 7)), parseInt(date.slice(8, 10)))
- }
+  }
+
+
 
 }
