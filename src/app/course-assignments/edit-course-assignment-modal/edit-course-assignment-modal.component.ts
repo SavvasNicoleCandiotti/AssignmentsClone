@@ -3,6 +3,7 @@ import { faXmark } from '@fortawesome/free-solid-svg-icons';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { CourseAssignmentsService } from 'src/app/services/course-assignments.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { CoursesService } from 'src/app/services/courses.service';
 
 
 @Component({
@@ -20,9 +21,11 @@ export class EditCourseAssignmentModalComponent implements OnInit {
     dueOn: new FormControl(this.courseAssignment.dueOn),
   })
 
-  constructor(private courseAssignmentsService: CourseAssignmentsService,
+  constructor(
+    private courseAssignmentsService: CourseAssignmentsService,
     private route: ActivatedRoute,
-    private router : Router) { }
+    private router : Router,
+    private coursesService : CoursesService) { }
 
   ngOnInit(): void {
 
@@ -36,6 +39,7 @@ export class EditCourseAssignmentModalComponent implements OnInit {
 
       //the event needs to be emitted inside this code block, it doesn't work below it
       this.courseAssignmentsService.updateEvent.emit()
+      this.coursesService.updateCourseAssignmentInCourse(this.courseAssignment.course_id, assignment)
     });
     // reset values once form is submitted
     this.editForm.reset()
@@ -44,12 +48,13 @@ export class EditCourseAssignmentModalComponent implements OnInit {
 
   }
 
-  handleDelete(assignment){
-    console.log(assignment)
-    this.courseAssignmentsService.deleteAssignment(assignment).subscribe(assignment =>{
-      this.courseAssignmentsService.removeAssignmentFromArray(assignment)
+  handleDelete(courseAssignmentId : number){
+    this.courseAssignmentsService.deleteAssignment(courseAssignmentId).subscribe(() =>{
+      this.courseAssignmentsService.removeAssignmentFromArray(courseAssignmentId)
+      this.coursesService.removeCourseAssignmentFromCourse(this.courseAssignment.course_id, courseAssignmentId)
+      this.courseAssignmentsService.deleteEvent.emit()
     }) //and then filter it out here by subscribing to service event to be  created
-    alert(`successfully deleted ${assignment.title} for ${assignment.course_name}`)
+    alert(`successfully deleted ${this.courseAssignment.title} for ${this.courseAssignment.course_name}`)
      this.router.navigate([''])
   }
 
