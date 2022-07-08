@@ -1,15 +1,13 @@
-<div class="modal-background">
+<div class="modal-background" (click)="onClick()">
   <div class="modal-content">
     <div class="section is-large">
       <button class="modal-close is-large" (click)="onClick()" aria-label="close"></button>
       <div class="columns">
         <div class="column is-three-quarters">
-          <h1 class="title">{{assignment.title}}</h1>
-          <br>
-          <p>{{assignment.description}}</p>
-          <br>
-          <br>
           <form [formGroup]="courseAssignmentForm" (ngSubmit)="submitModalForm(courseAssignmentForm.value)" >
+            <h1 class="title">{{assignment.title}}</h1>
+            <h4>{{assignment.description}}</h4>
+            <br>
             <label class="label" type="date" for="assigned_on">Assign on:</label>
             <input  class="input" type="date" formControlName="assignedOn" placeholder="assigned on date">
             <br>
@@ -18,7 +16,7 @@
             <input  class="input" type="date" formControlName="dueOn" placeholder="due on date">
             <br>
             <br>
-            <label type="select" class="label" for="course_id">Select class:</label>
+            <label type="select" class="label" for="course_id">Select a class:</label>
             <select type="select" formControlName="course_id" class="input">
               <option>Select a Course</option>
               <option *ngFor="let course of coursesArray" value="{{course.id}}">{{course.name}}</option>
