@@ -1,5 +1,6 @@
 import { Injectable, EventEmitter } from '@angular/core';
 import {HttpClient} from '@angular/common/http'
+import { CourseAssignmentInterface } from '../models/CourseAssignmentInterface';
 
 
 
@@ -8,12 +9,12 @@ import {HttpClient} from '@angular/common/http'
 })
 export class CoursesService {
 
-  private coursesArray : {
+  public coursesArray : {
     id: number,
     name: string,
     gradeLevel: number,
     programs: {}[],
-    course_assignments: {}[]
+    course_assignments: CourseAssignmentInterface[]
   }[] = []
 
   private coursesStatus = "idle"
@@ -60,5 +61,37 @@ export class CoursesService {
   setCourseStatus = (status) => this.courseStatus = status
 
   fetchEvent = new EventEmitter<string>()
+
+  removeCourseAssignmentFromCourse(courseId : number, courseAssignmentId: number){
+    this.coursesArray = this.coursesArray.map(course => {
+      if(course.id === courseId){
+        return {...course, 
+          course_assignments : course.course_assignments.filter(
+            course_assignment => course_assignment.id != courseAssignmentId
+          )
+        }
+      }else{
+        return course
+      }
+    })
+  }
+
+  updateCourseAssignmentInCourse(courseId : number, courseAssignment: CourseAssignmentInterface){
+    this.coursesArray = this.coursesArray.map(course => {
+      if(course.id === courseId){
+        return {...course, 
+          course_assignments : course.course_assignments.map(course_assignment => {
+            if(course_assignment.id === courseAssignment.id){
+              return courseAssignment
+            }else{
+              return course_assignment
+            }
+          })
+        }
+      }else{
+        return course
+      }
+    })
+  }
 
   }
