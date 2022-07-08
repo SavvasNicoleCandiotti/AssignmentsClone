@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 
@@ -52,12 +52,12 @@ import { CreateCourseAssignmentModalComponent } from './course-assignments/creat
     ProgramAssignmentsComponent,
     ProgramAssignmentComponent,
     ProgramAssignmentDetailComponent,
-    EditCourseAssignmentModalComponent, 
+    EditCourseAssignmentModalComponent,
     CreateCourseAssignmentModalComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule, HttpClientModule, ReactiveFormsModule, FontAwesomeModule
+    AppRoutingModule, HttpClientModule, ReactiveFormsModule, FontAwesomeModule, FormsModule
 
   ],
   providers: [],
