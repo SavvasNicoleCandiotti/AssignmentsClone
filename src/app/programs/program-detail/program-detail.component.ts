@@ -15,7 +15,7 @@ import { ProgramsServiceService } from '../../services/programs-service.service'
 export class ProgramDetailComponent implements OnInit {
 
   showCreateAssignmentModal : boolean = false
-  showCreateCourseAssignmentModal : string = "modal is-closed"
+  showCreateCourseAssignmentModal : boolean = false
 
   public program: ProgramInterface
 
@@ -32,9 +32,9 @@ export class ProgramDetailComponent implements OnInit {
 
   ngOnInit(): void {
     this.courseAssignmentsService.toggleModalEvent
-    .subscribe(string => {
-      debugger
-      this.showCreateCourseAssignmentModal = string})
+    .subscribe(boolean => {
+      this.showCreateCourseAssignmentModal = boolean
+    })
     
     this.programsService.selectProgramEvent
       .subscribe(program => this.program = program);
@@ -69,7 +69,7 @@ export class ProgramDetailComponent implements OnInit {
   }
 
   closeCreateCourseAssignmentModal(){
-    this.showCreateCourseAssignmentModal = "modal is-closed"
+    this.showCreateCourseAssignmentModal = false
   }
 
   //this won't work
