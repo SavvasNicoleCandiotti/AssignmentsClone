@@ -24,12 +24,12 @@ export class AssignmentsService {
   constructor(private http: HttpClient) { }
   // index route
   fetchAllAssignments(){
-      return this.http.get('http://localhost:3000/course_assignments');
+      return this.http.get('http://localhost:3000/assignments');
     }
 
     // show route
   fetchAssignment(id){
-    return this.http.get('http://localhost:3000/course_assignments/' + id);
+    return this.http.get('http://localhost:3000/assignments/' + id);
   }
 
   getAssignments = () => [...this.assignmentsArray];
