@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AssignmentInterface } from 'src/app/models/AssignmentInterface';
+import { ProgramAssignmentComponent } from 'src/app/program-assignments/program-assignment/program-assignment.component';
 import { AssignmentsService } from 'src/app/services/assignments.service';
 import { ProgramInterface } from '../../models/ProgramInterface';
 import { ProgramsServiceService } from '../../services/programs-service.service';
@@ -16,7 +17,7 @@ export class ProgramDetailComponent implements OnInit {
   public program: ProgramInterface
 
   public status : string = "idle"
-  programAssignment : AssignmentInterface
+  @Input() programAssignment : AssignmentInterface
 
   constructor(
     private programsService : ProgramsServiceService,
