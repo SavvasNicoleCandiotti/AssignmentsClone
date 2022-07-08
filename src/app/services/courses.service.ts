@@ -66,7 +66,7 @@ export class CoursesService {
     this.coursesArray = this.coursesArray.map(course => {
       if(course.id === courseId){
         return {...course, 
-          course_assignments : course.course_assignments.filter(
+          course_assignments: course.course_assignments.filter(
             course_assignment => course_assignment.id != courseAssignmentId
           )
         }
