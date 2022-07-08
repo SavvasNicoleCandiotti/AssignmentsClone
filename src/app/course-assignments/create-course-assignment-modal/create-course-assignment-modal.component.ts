@@ -13,18 +13,18 @@ import { HttpService } from 'src/app/services/http.service';
   styleUrls: ['./create-course-assignment-modal.component.css']
 })
 export class CreateCourseAssignmentModalComponent implements OnInit {
-  @Input() assignment : AssignmentInterface = {}
-  @Input() showModal:boolean = false
+  @Input() assignment : AssignmentInterface
+  @Input() showModal : boolean = false
   randomTestNumber = 5
   @Output() modalBtnClick = new EventEmitter()
   @Output() onAddAssignment: EventEmitter<CourseAssignmentInterface> = new EventEmitter()
 
-  // courseAssignmentForm = new FormGroup({
-  //   course_id: new FormControl(null, Validators.required),
-  //   assignment_id: new FormControl(this.assignment.id, Validators.required),
-  //   assignedOn: new FormControl(Date, Validators.required),
-  //   dueOn: new FormControl(Date, Validators.required)
-  // });
+  courseAssignmentForm = new FormGroup({
+    course_id: new FormControl(null, Validators.required),
+    assignment_id: new FormControl(this.assignment.id, Validators.required),
+    assignedOn: new FormControl(Date, Validators.required),
+    dueOn: new FormControl(Date, Validators.required)
+  });
 
   charsRemaining:number=500
 
@@ -33,33 +33,31 @@ export class CreateCourseAssignmentModalComponent implements OnInit {
     private httpService : HttpService, 
     private route : ActivatedRoute
   ) {
-    console.log("hi")
    }
 
   ngOnInit(): void {
-    console.log("hi")
   }
 
   onClick(){
     this.modalBtnClick.emit()
   }
 
-  // submitModalForm(value : CourseAssignmentInputInterface ){
-  //   // this neeeds to take in an assignment
-  //   // this.onAddAssignment.emit(value)
-  //   this.courseAssignmentsService.postAssignment(value)
-  //   .subscribe((courseAssignment : CourseAssignmentInterface) => {
-  //     this.courseAssignmentsService.addCourseAssignment(courseAssignment)
-  //     //the event needs to be emitted inside this code block, it doesn't work below it
-  //     this.httpService.postEvent.emit()
-  //   });
+  submitModalForm(value : CourseAssignmentInputInterface ){
+    // this neeeds to take in an assignment
+    // this.onAddAssignment.emit(value)
+    this.courseAssignmentsService.postAssignment(value)
+    .subscribe((courseAssignment : CourseAssignmentInterface) => {
+      this.courseAssignmentsService.addCourseAssignment(courseAssignment)
+      //the event needs to be emitted inside this code block, it doesn't work below it
+      this.httpService.postEvent.emit()
+    });
 
-  //   // reset values once form is submitted - is there a reset method on forms?
-  //   this.courseAssignmentForm.reset()
+    // reset values once form is submitted - is there a reset method on forms?
+    this.courseAssignmentForm.reset()
 
-  //   // closes modal once form is submitted
-  //    this.modalBtnClick.emit()
-  // }
+    // closes modal once form is submitted
+     this.modalBtnClick.emit()
+  }
 
   setLength(event){
     this.charsRemaining = 500 - event.length
