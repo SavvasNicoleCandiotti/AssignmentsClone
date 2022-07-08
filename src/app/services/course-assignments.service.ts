@@ -42,19 +42,20 @@ export class CourseAssignmentsService {
     return this.http.patch<CourseAssignmentInterface>(url, courseAssignment, httpOptions)
   }
 
-  deleteAssignment(courseAssignment: CourseAssignmentInterface):Observable<CourseAssignmentInterface>{
-    const url = `${this.apiUrl}/${courseAssignment.id}`
-    return this.http.delete<CourseAssignmentInterface>(url)
+  deleteAssignment(id: number):Observable<void>{
+    const url = `${this.apiUrl}/${id}`
+    return this.http.delete<void>(url)
   }
 
   updateCourseAssignment(updatedAssignment){
-    this.courseAssignmentsArray.filter(courseAssignment=> {
-      this.courseAssignmentsArray[courseAssignment.id]=updatedAssignment
-    })
-    console.log("array: ", this.courseAssignmentsArray, "item: ",updatedAssignment)
+    this.courseAssignmentsArray = this.courseAssignmentsArray.map(courseAssignment=> {
+      return courseAssignment.id === updatedAssignment.id ? updatedAssignment : courseAssignment
+      })
   }
 
-  removeAssignmentFromArray = (assignment) => this.courseAssignmentsArray.filter(courseAssignment => courseAssignment.id !==assignment.id)
+  removeAssignmentFromArray = (id : number) => {
+    this.setCourseAssignments(this.courseAssignmentsArray.filter(courseAssignment => courseAssignment.id != id))
+  }
 
   selectCourseAssignmentEvent = new EventEmitter<CourseAssignmentInterface>()
 
@@ -62,10 +63,7 @@ export class CourseAssignmentsService {
 
   getCourseAssignment = (id : number) => this.courseAssignmentsArray.find(courseAssignment => courseAssignment.id === id)
 
-  setCourseAssignments = (array) => {
-    this.courseAssignmentsArray = array
-    console.log(this.courseAssignmentsArray)
-  }
+  setCourseAssignments = (array) => this.courseAssignmentsArray = array
 
   addCourseAssignment = (courseAssignment) => {
     this.courseAssignmentsArray = [
@@ -90,6 +88,7 @@ export class CourseAssignmentsService {
   fetchEvent = new EventEmitter<string>()
   updateEvent = new EventEmitter<void>()
   toggleModalEvent = new EventEmitter<string>()
+  deleteEvent = new EventEmitter<void>()
 
   formatDate(date: string){
     return new Date(parseInt(date.slice(0, 4)), parseInt(date.slice(5, 7)), parseInt(date.slice(8, 10)))
