@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { CourseAssignmentsService } from '../services/course-assignments.service';
 import { CoursesService } from '../services/courses.service';
 
 @Component({
@@ -11,7 +12,10 @@ export class HomeComponent implements OnInit {
   coursesArray:{}=[]
   public status : string = "idle"
 
-  constructor(private coursesService : CoursesService) {
+  constructor(
+    private coursesService : CoursesService,
+    private courseAssignmentsService : CourseAssignmentsService
+  ) {
     //     this.getCourses()
     // putting this here means that it will always fetch when you go to the component
   }
@@ -19,6 +23,12 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
     this.coursesService.fetchEvent
       .subscribe(status => this.status = status);
+
+    this.courseAssignmentsService.updateEvent
+    .subscribe(() => this.coursesArray = this.coursesService.getCourses());
+    
+    this.courseAssignmentsService.deleteEvent
+    .subscribe(() => this.coursesArray = this.coursesService.getCourses());
     //check the status of courses to see if they have already been fetched before
     //this will prevent the fetch from happening everytime the component is constructed
     this.status = this.coursesService.getStatus()
