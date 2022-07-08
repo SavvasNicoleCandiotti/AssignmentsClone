@@ -3,13 +3,13 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { AssignmentsService } from 'src/app/services/assignments.service';
 import { AssignmentInterface } from '../../models/AssignmentInterface';
 
+
 @Component({
   selector: 'app-assignment-detail',
   templateUrl: './assignment-detail.component.html',
   styleUrls: ['./assignment-detail.component.css']
 })
 export class AssignmentDetailComponent implements OnInit {
-
   public assignment: AssignmentInterface
 
   public status : string = "idle"
@@ -54,7 +54,7 @@ export class AssignmentDetailComponent implements OnInit {
         this.assignmentsService.setAssignmentStatus("success")
         this.assignmentsService.fetchEvent.emit("success")
 
-        console.log("fetched") 
+        console.log("fetched")
       }), 1000)
   }
 
