@@ -21,6 +21,8 @@ export class AssignmentsService {
   private assignmentsStatus = "idle"
   public assignmentStatus = "idle"
 
+  private selectedAssignment : AssignmentInterface
+
   constructor(private http: HttpClient) { }
   // index route
   fetchAllAssignments(){
@@ -33,19 +35,19 @@ export class AssignmentsService {
   }
 
   getAssignments = () => [...this.assignmentsArray];
-
   getAssignment = (id : number) => this.assignmentsArray.find(assignment => assignment.id === id)
 
   setAssignments = (array) => this.assignmentsArray = array
-
   addAssignment = (assignment) => this.assignmentsArray = [...this.assignmentsArray, assignment]
 
   setStatus = (status) => this.assignmentsStatus = status
-
   getStatus = () => this.assignmentsStatus
 
   getAssignmentStatus = () => this.assignmentStatus
   setAssignmentStatus = (status) => this.assignmentStatus = status
+
+  setSelectedAssignment = (assignment) => this.selectedAssignment = assignment
+  getSelectedAssignment = () => this.selectedAssignment
 
   fetchEvent = new EventEmitter<string>()
   postEvent = new EventEmitter<void>()
@@ -53,6 +55,7 @@ export class AssignmentsService {
   selectProgramAssignmentEvent = new EventEmitter<AssignmentInterface>()
 
   filterAssignmentsByProgram = (id : number) => this.assignmentsArray.filter(assignment => assignment.program_id === id)
+
 
   //test if writing get req as observable
   getAssignmentsTest(): Observable<AssignmentInterface[]>{
