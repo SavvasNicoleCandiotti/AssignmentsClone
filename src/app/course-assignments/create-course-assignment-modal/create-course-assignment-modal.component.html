@@ -1,29 +1,40 @@
-<div class="container">
-    <div class="header">
-        <button class="button" (click)="onClick()"> X
-        </button>
-    </div>
-    <div class="columns">
-        <div class="column">
-            <p>{{assignment.title}}</p>
-            <p>{{assignment.description}}</p>
-             <form [formGroup]="courseAssignmentForm" (ngSubmit)="submitModalForm(courseAssignmentForm.value)" >
-                <label class="label" for="assigned_on">Assign on:</label>
-                <input  class="input" type="date" formControlName="assigned_on" placeholder="assigned on date">
-                <br>
-                <br>
-                <label class="label" for="due_on">Assign on:</label>
-                <input  class="input" type="date" formControlName="due_on" placeholder="due on date">
-                <br>
-                <br>
-                 <button [disabled]="!courseAssignmentForm.valid" class="button" type="submit">
-                    Add Assignment to Program
-                </button>
-                <br>
-            </form>
+<div class="modal-background">
+  <div class="modal-content">
+    <div class="section is-large">
+      <button class="modal-close is-large" (click)="onClick()" aria-label="close"></button>
+      <div class="columns">
+        <div class="column is-three-quarters">
+          <h1 class="title">{{assignment.title}}</h1>
+          <br>
+          <p>{{assignment.description}}</p>
+          <br>
+          <br>
+          <form [formGroup]="courseAssignmentForm" (ngSubmit)="submitModalForm(courseAssignmentForm.value)" >
+            <label class="label" type="date" for="assigned_on">Assign on:</label>
+            <input  class="input" type="date" formControlName="assignedOn" placeholder="assigned on date">
+            <br>
+            <br>
+            <label class="label" type="date" for="due_on">Assign on:</label>
+            <input  class="input" type="date" formControlName="dueOn" placeholder="due on date">
+            <br>
+            <br>
+            <label type="select" class="label" for="course_id">Select class:</label>
+            <select type="select" formControlName="course_id" class="input">
+              <option>Select a Course</option>
+              <option *ngFor="let course of coursesArray" value="{{course.id}}">{{course.name}}</option>
+            </select>
+            <br>
+            <br>
+            <button [disabled]="!courseAssignmentForm.valid" class="button" type="submit">
+              Add Assignment to Program
+            </button>
+            <br>
+          </form>
         </div>
-        <div class="column">
-            <img src="../../../assets/icon4.png" alt="course icon" />
+        <div class="column is-one-quarter">
+          <img src="../../../assets/icon1.png" alt="course icon" />
         </div>
+      </div>
     </div>
+  </div>
 </div>

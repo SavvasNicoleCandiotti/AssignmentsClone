@@ -22,12 +22,10 @@
         (modalBtnClick)="closeModal()" 
         *ngIf="showCreateAssignmentModal"
     ></app-create-assignment-modal>
-
-    <app-create-course-assignment-modal 
-    [assignment]="programAssignment" 
-    [showModal]="showCreateCourseAssignmentModal" 
-    (modalBtnClick)="closeModal()" 
-    *ngIf="showCreateCourseAssignmentModal"
-    ></app-create-course-assignment-modal>
-  
 </section>
+<app-create-course-assignment-modal    
+class=showCreateCourseAssignmentModal 
+[assignment]="programAssignment"  
+*ngIf="showCreateCourseAssignmentModal"
+></app-create-course-assignment-modal>
+

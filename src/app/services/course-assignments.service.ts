@@ -37,7 +37,7 @@ export class CourseAssignmentsService {
   }
 
   //patch for  edit course assignment (edit course assignment modal)
-  updateAssignment(courseAssignment: CourseAssignmentInterface):Observable<CourseAssignmentInterface>{
+  patchAssignment(courseAssignment: CourseAssignmentInterface):Observable<CourseAssignmentInterface>{
     const url = `${this.apiUrl}/${courseAssignment.id}`
     return this.http.patch<CourseAssignmentInterface>(url, courseAssignment, httpOptions)
   }
@@ -46,6 +46,15 @@ export class CourseAssignmentsService {
     const url = `${this.apiUrl}/${courseAssignment.id}`
     return this.http.delete<CourseAssignmentInterface>(url)
   }
+
+  updateCourseAssignment(updatedAssignment){
+    this.courseAssignmentsArray.filter(courseAssignment=> {
+      this.courseAssignmentsArray[courseAssignment.id]=updatedAssignment
+    })
+    console.log("array: ", this.courseAssignmentsArray, "item: ",updatedAssignment)
+  }
+
+  removeAssignmentFromArray = (assignment) => this.courseAssignmentsArray.filter(courseAssignment => courseAssignment.id !==assignment.id)
 
   selectCourseAssignmentEvent = new EventEmitter<CourseAssignmentInterface>()
 
@@ -79,7 +88,8 @@ export class CourseAssignmentsService {
   getSelectedCourseAssignment = () => this.selectedCourseAssignment
   
   fetchEvent = new EventEmitter<string>()
-  toggleModalEvent = new EventEmitter<boolean>()
+  updateEvent = new EventEmitter<void>()
+  toggleModalEvent = new EventEmitter<string>()
 
   formatDate(date: string){
     return new Date(parseInt(date.slice(0, 4)), parseInt(date.slice(5, 7)), parseInt(date.slice(8, 10)))

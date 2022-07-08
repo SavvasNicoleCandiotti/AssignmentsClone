@@ -1,4 +1,4 @@
-.container {
+.section {
     line-height: 20px;
     position: fixed;
     top: 50%;
@@ -20,6 +20,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    padding: 1rem
 }
 
 img {
@@ -44,3 +45,8 @@ h3 {
     color: red;
     font-weight: bold;
 }
+
+.modal-content {
+    margin-top: 100px;
+    width: 450px;
+  }

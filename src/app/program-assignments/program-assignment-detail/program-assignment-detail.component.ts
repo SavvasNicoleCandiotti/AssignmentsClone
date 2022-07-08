@@ -11,7 +11,6 @@ import { CourseAssignmentsService } from 'src/app/services/course-assignments.se
 })
 export class ProgramAssignmentDetailComponent implements OnInit {
   faEllipsisVertical=faEllipsisVertical
-  showCreateCourseAssignmentModal : boolean = false
 
 
   @Input() programAssignment : AssignmentInterface
@@ -26,12 +25,12 @@ export class ProgramAssignmentDetailComponent implements OnInit {
     .subscribe(programAssignment => this.programAssignment = programAssignment)
   }
 
-  toggleModal(){
-    this.courseAssignmentsService.toggleModalEvent.emit(true)
+  openCreateCourseAssignmentModal(){
+    this.courseAssignmentsService.toggleModalEvent.emit('modal is-active') 
   }
 
   closeModal(){
-  this.showCreateCourseAssignmentModal = false;
+    this.courseAssignmentsService.toggleModalEvent.emit('modal is-closed') 
   }
 
 }
