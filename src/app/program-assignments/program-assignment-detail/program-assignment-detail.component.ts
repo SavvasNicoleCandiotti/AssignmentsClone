@@ -26,11 +26,11 @@ export class ProgramAssignmentDetailComponent implements OnInit {
   }
 
   openCreateCourseAssignmentModal(){
-    this.courseAssignmentsService.toggleModalEvent.emit('modal is-active') 
+    this.courseAssignmentsService.toggleModalEvent.emit(true) 
   }
 
   closeModal(){
-    this.courseAssignmentsService.toggleModalEvent.emit('modal is-closed') 
+    this.courseAssignmentsService.toggleModalEvent.emit(false) 
   }
 
 }
