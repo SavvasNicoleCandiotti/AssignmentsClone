@@ -42,6 +42,7 @@ export class CreateCourseAssignmentModalComponent implements OnInit {
    }
 
   ngOnInit(): void {
+    this.courseAssignmentsService.toggleModalEvent.subscribe((boolean) => console.log("hi"))
     if(this.coursesService.getCoursesStatus() === "idle"){
       this.getCourses()
     }else{
@@ -50,8 +51,8 @@ export class CreateCourseAssignmentModalComponent implements OnInit {
   }
 
   onClick(){
-    this.courseAssignmentsService.toggleModalEvent.emit('modal is-closed')
-    debugger
+    this.courseAssignmentsService.toggleModalEvent.emit(false)
+    this.modalBtnClick.emit()
   }
 
   submitModalForm(value : CourseAssignmentInputInterface ){
