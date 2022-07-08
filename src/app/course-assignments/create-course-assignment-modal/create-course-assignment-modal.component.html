@@ -5,7 +5,9 @@
     </div>
     <div class="columns">
         <div class="column">
-             <form [formGroup]="courseAssignmentForm" (ngSubmit)="submitModalForm(courseAssignmentForm.value)" >
+            <p>{{assignment.title}}</p>
+            <p>{{assignment.description}}</p>
+             <!-- <form [formGroup]="courseAssignmentForm" (ngSubmit)="submitModalForm(courseAssignmentForm.value)" >
                 <label class="label" for="assigned_on">Assign on:</label>
                 <input  class="input" type="date" formControlName="assigned_on" placeholder="assigned on date">
                 <br>
@@ -24,7 +26,7 @@
                     Add Assignment to Program
                 </button>
                 <br>
-            </form>
+            </form> -->
         </div>
         <div class="column">
             <img src="../../../assets/icon4.png" alt="course icon" />

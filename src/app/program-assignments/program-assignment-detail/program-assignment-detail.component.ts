@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { AssignmentInterface } from 'src/app/models/AssignmentInterface';
 import { AssignmentsService } from 'src/app/services/assignments.service';
 import { faEllipsisVertical } from '@fortawesome/free-solid-svg-icons';
+import { CourseAssignmentsService } from 'src/app/services/course-assignments.service';
 
 @Component({
   selector: 'app-program-assignment-detail',
@@ -15,21 +16,20 @@ export class ProgramAssignmentDetailComponent implements OnInit {
 
   @Input() programAssignment : AssignmentInterface
 
-  constructor(private assignmentsService: AssignmentsService) { }
+  constructor(
+    private assignmentsService: AssignmentsService,
+    private courseAssignmentsService : CourseAssignmentsService
+  ) { }
 
   ngOnInit(): void {
-    this.assignmentsService.selectProgramAssignmentEvent.subscribe(programAssignment => this.programAssignment = programAssignment)
-  }
-
-  handleClick(){
-    //this needs to open the model in program detail
-    debugger
-    this.toggleModal()
+    this.assignmentsService.selectProgramAssignmentEvent
+    .subscribe(programAssignment => this.programAssignment = programAssignment)
   }
 
   toggleModal(){
-    this.showCreateCourseAssignmentModal = !this.showCreateCourseAssignmentModal
+    this.courseAssignmentsService.toggleModalEvent.emit(true)
   }
+
   closeModal(){
   this.showCreateCourseAssignmentModal = false;
   }

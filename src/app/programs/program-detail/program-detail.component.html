@@ -16,5 +16,18 @@
 
     </div>
     <br>
-    <app-create-assignment-modal [program_id]="program.id" [showModal]="showCreateAssignmentModal" (modalBtnClick)="closeModal()" *ngIf="showCreateAssignmentModal"></app-create-assignment-modal>
+    <app-create-assignment-modal 
+        [program_id]="program.id" 
+        [showModal]="showCreateAssignmentModal" 
+        (modalBtnClick)="closeModal()" 
+        *ngIf="showCreateAssignmentModal"
+    ></app-create-assignment-modal>
+
+    <app-create-course-assignment-modal 
+    [assignment]="programAssignment" 
+    [showModal]="showCreateCourseAssignmentModal" 
+    (modalBtnClick)="closeModal()" 
+    *ngIf="showCreateCourseAssignmentModal"
+    ></app-create-course-assignment-modal>
+  
 </section>
