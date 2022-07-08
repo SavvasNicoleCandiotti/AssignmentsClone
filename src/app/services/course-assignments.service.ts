@@ -87,7 +87,7 @@ export class CourseAssignmentsService {
   
   fetchEvent = new EventEmitter<string>()
   updateEvent = new EventEmitter<void>()
-  toggleModalEvent = new EventEmitter<string>()
+  toggleModalEvent = new EventEmitter<boolean>()
   deleteEvent = new EventEmitter<void>()
 
   formatDate(date: string){
