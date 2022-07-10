@@ -1,31 +1,48 @@
-<div class="container">
-    <div class="header">
-        <button class="button" (click)="onClick()"> X
-        </button>
-    </div>
-    <div class="columns">
+<div class="modal-background">
+  <div class="modal-content">
+    <div class="container">
+      <div class="header">
+        <button class="button" (click)="onClick()">X</button>
+      </div>
+      <div class="columns">
         <div class="column">
-             <form [formGroup]="modalForm" (ngSubmit)="submitModalForm(modalForm.value)" >
-                <label class="label" for="title">Assignment name:</label>
-                <input  class="input" type="text" formControlName="title" placeholder="assignment name">
-                <br>
-                <br>
-                <label class="label" for="title">Assignment Description:</label>
-                <textarea (input)="setLength($event.target.value)"formControlName="description" value="description" class="textarea" placeholder="A Very Fun Assignment"></textarea>
-                <p>{{charsRemaining}} Characters Remaining</p>
-            <p class="warning" *ngIf="charsRemaining <=0">Description is >500 Characters</p>
+          <form
+            [formGroup]="modalForm"
+            (ngSubmit)="submitModalForm(modalForm.value)"
+          >
+            <label class="label" for="title">Assignment name:</label>
+            <input
+              class="input"
+              type="text"
+              formControlName="title"
+              placeholder="assignment name"
+            />
+            <br />
+            <br />
+            <label class="label" for="title">Assignment Description:</label>
+            <textarea
+              (input)="setLength($event.target.value)"
+              formControlName="description"
+              value="description"
+              class="textarea"
+              placeholder="A Very Fun Assignment"
+            ></textarea>
+            <p>{{ charsRemaining }} Characters Remaining</p>
+            <p class="warning" *ngIf="charsRemaining <= 0">
+              Description is >500 Characters
+            </p>
 
-                <br>
-                 <button [disabled]="!modalForm.valid" class="button" type="submit">
-                    Add Assignment to Program
-                </button>
-                <br>
-            </form>
+            <br />
+            <button [disabled]="!modalForm.valid" class="button" type="submit">
+              Add Assignment to Program
+            </button>
+            <br />
+          </form>
         </div>
         <div class="column">
-            <img src="../../../assets/icon4.png" alt="course icon" />
+          <img src="../../../assets/icon4.png" alt="course icon" />
         </div>
+      </div>
     </div>
+  </div>
 </div>
-
-

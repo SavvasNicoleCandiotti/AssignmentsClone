@@ -1,18 +1,15 @@
 <!-- need an a tag for routing -->
 
 <a>
-
-<div class="container">
-
+  <div class="container">
     <div class="title column">
-            <img  src="../../../assets/icon{{number}}.png" alt="course picture">
-            <p class=title-p>{{courseAssignment.title}}</p>
+      <img src="../../../assets/icon{{ number }}.png" alt="course picture" />
+      <p class="title-p">{{ courseAssignment.title }}</p>
     </div>
     <div class="dates column">
-        <p> Assigned on: {{courseAssignment.assignedOn |date:'shortDate'}}</p>
-        <p>Due on: {{courseAssignment.dueOn |date:'shortDate'}}</p>
+      <p>Assigned on: {{ courseAssignment.assignedOn | date: "shortDate" }}</p>
+      <p>Due on: {{ courseAssignment.dueOn | date: "shortDate" }}</p>
     </div>
-</div>
-<!-- <hr> -->
+  </div>
+  <!-- <hr> -->
 </a>
-

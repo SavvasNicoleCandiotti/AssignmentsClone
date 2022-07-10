@@ -1,31 +1,34 @@
 <section>
-    <div class="columns">
-        <div class="column is-one-quarter">
-            <app-program-assignments></app-program-assignments>
-            <button class="button" (click)="toggleModal()">Add an Assignment to this Program</button>
-        </div>
-        <div class="column is-three-quarters">
-            <p>Search area</p>
-            <hr>
-            <br>
-            <app-program-assignment-detail [programAssignment]="programAssignment"
-            *ngIf="programAssignment"></app-program-assignment-detail>
-
-        </div>
-        <br>
-
+  <div class="columns">
+    <div class="column is-one-quarter">
+      <app-program-assignments></app-program-assignments>
+      <button class="button" (click)="toggleModal()">
+        Add an Assignment to this Program
+      </button>
     </div>
-    <br>
-    <app-create-assignment-modal 
-        [program_id]="program.id" 
-        [showModal]="showCreateAssignmentModal" 
-        (modalBtnClick)="closeModal()" 
-        *ngIf="showCreateAssignmentModal"
-    ></app-create-assignment-modal>
+    <div class="column is-three-quarters">
+      <p>Search area</p>
+      <hr />
+      <br />
+      <app-program-assignment-detail
+        [programAssignment]="programAssignment"
+        *ngIf="programAssignment"
+      ></app-program-assignment-detail>
+    </div>
+    <br />
+  </div>
+  <br />
+  <app-create-assignment-modal
+    [program_id]="program.id"
+    [showModal]="showCreateAssignmentModal"
+    (modalBtnClick)="closeModal()"
+    *ngIf="showCreateAssignmentModal"
+  ></app-create-assignment-modal>
 </section>
-<app-create-course-assignment-modal    
-[ngClass]="showCreateCourseAssignmentModal ? 'modal is-active' : 'modal is-closed'" 
-[assignment]="programAssignment"  
-*ngIf="showCreateCourseAssignmentModal"
+<app-create-course-assignment-modal
+  [ngClass]="
+    showCreateCourseAssignmentModal ? 'modal is-active' : 'modal is-closed'
+  "
+  [assignment]="programAssignment"
+  *ngIf="showCreateCourseAssignmentModal"
 ></app-create-course-assignment-modal>
-

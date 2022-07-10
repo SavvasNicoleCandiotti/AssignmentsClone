@@ -1,26 +1,39 @@
-<section class="box section is-medium" *ngIf="status != 'loading'; else loading">
-    <h1 class="title">{{assignment.title}}</h1>
-    <h2 class="subtitle">{{assignment.description}}</h2>
-    <br>
+<section
+  class="box section is-medium"
+  *ngIf="status != 'loading'; else loading"
+>
+  <h1 class="title">{{ assignment.title }}</h1>
+  <h2 class="subtitle">{{ assignment.description }}</h2>
+  <br />
 
-    <div class="container">
-        <div class="columns is-tablet">
-            <div class="column">
-                <button class="button is-success is-responsive" (click)="navigateToAssignments()">Return to Assignments</button>
-            </div>
-            <div class="column">
-                <button class="button is-success is-responsive" (click)="navigateHome()">Return to Home</button>
-            </div>
-            <div class="column">
-                <button class="button is-warning is-responsive">Edit Assignment</button>
-            </div>
-        </div>
+  <div class="container">
+    <div class="columns is-tablet">
+      <div class="column">
+        <button
+          class="button is-success is-responsive"
+          (click)="navigateToAssignments()"
+        >
+          Return to Assignments
+        </button>
+      </div>
+      <div class="column">
+        <button
+          class="button is-success is-responsive"
+          (click)="navigateHome()"
+        >
+          Return to Home
+        </button>
+      </div>
+      <div class="column">
+        <button class="button is-warning is-responsive">Edit Assignment</button>
+      </div>
     </div>
+  </div>
 </section>
 
 <ng-template #loading>
-    <section class="section is-medium">
-        <br>
-        <span class="loader"></span>
-    </section>
+  <section class="section is-medium">
+    <br />
+    <span class="loader"></span>
+  </section>
 </ng-template>

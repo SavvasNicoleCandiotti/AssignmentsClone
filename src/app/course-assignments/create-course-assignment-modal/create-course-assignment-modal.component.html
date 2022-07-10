@@ -1,42 +1,72 @@
-<div class="modal-background" >
+<div class="modal-background">
   <div class="modal-content">
     <div class="section is-large">
       <div class="xmark">
-      <!-- <button class="modal-close is-large" (click)="onClick()" aria-label="close"></button> -->
-      <button class="button" (click)="onClick()" aria-label="close">
-        <fa-icon [icon]="faXmark"></fa-icon>
-      </button>
+        <!-- <button class="modal-close is-large" (click)="onClick()" aria-label="close"></button> -->
+        <button class="button" (click)="onClick()" aria-label="close">
+          <fa-icon [icon]="faXmark"></fa-icon>
+        </button>
       </div>
       <div class="columns">
         <div class="column is-full">
-          <form [formGroup]="courseAssignmentForm" (ngSubmit)="submitModalForm(courseAssignmentForm.value)" >
-            <h1 class="title">{{assignment.title}}</h1>
-            <h4>{{assignment.description}}</h4>
-            <br>
-            <label class="label" type="date" for="assigned_on">Assign on:</label>
-            <input  class="input" type="date" formControlName="assignedOn" placeholder="assigned on date">
-            <br>
-            <br>
+          <form
+            [formGroup]="courseAssignmentForm"
+            (ngSubmit)="submitModalForm(courseAssignmentForm.value)"
+          >
+            <h1 class="title">{{ assignment.title }}</h1>
+            <h4>{{ assignment.description }}</h4>
+            <br />
+            <label class="label" type="date" for="assigned_on"
+              >Assign on:</label
+            >
+            <input
+              class="input"
+              type="date"
+              formControlName="assignedOn"
+              placeholder="assigned on date"
+            />
+            <br />
+            <br />
             <label class="label" type="date" for="due_on">Due on:</label>
-            <input  class="input" type="date" formControlName="dueOn" placeholder="due on date">
-            <br>
-            <br>
-            <label type="select" class="label" for="course_id">Select a class:</label>
+            <input
+              class="input"
+              type="date"
+              formControlName="dueOn"
+              placeholder="due on date"
+            />
+            <br />
+            <br />
+            <label type="select" class="label" for="course_id"
+              >Select a class:</label
+            >
             <select type="select" formControlName="course_id" class="input">
               <option>Select a Course</option>
-              <option *ngFor="let course of coursesArray" value="{{course.id}}">{{course.name}}</option>
+              <option
+                *ngFor="let course of coursesArray"
+                value="{{ course.id }}"
+              >
+                {{ course.name }}
+              </option>
             </select>
-            <br>
-            <br>
-              <div class="modalButtons">
-            <button class="button" class="button is-info is-light" (click)="onClick()">
-              Cancel
-            </button>
-            <button [disabled]="!courseAssignmentForm.valid" class="button is-info " type="submit">
-              Add Assignment to Program
-            </button>
+            <br />
+            <br />
+            <div class="modalButtons">
+              <button
+                class="button"
+                class="button is-info is-light"
+                (click)="onClick()"
+              >
+                Cancel
+              </button>
+              <button
+                [disabled]="!courseAssignmentForm.valid"
+                class="button is-info"
+                type="submit"
+              >
+                Add Assignment to Program
+              </button>
             </div>
-            <br>
+            <br />
           </form>
         </div>
         <!-- <div class="column is-one-quarter">

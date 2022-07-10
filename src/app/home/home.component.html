@@ -1,15 +1,15 @@
 <div class="container">
-    <section class="section">
-        <h1 class="title">Welcome Home</h1>
-        <div *ngIf="status != 'loading'; else loading">
-            <app-home-course-card 
-                *ngFor="let course of coursesArray" 
-                [course]="course"
-            ></app-home-course-card>
-        </div>
-    </section>
-    <ng-template #loading>
-        <br>
-        <span class="loader"></span>      
-    </ng-template>
+  <section class="section">
+    <h1 class="title">Welcome Home</h1>
+    <div *ngIf="status != 'loading'; else loading">
+      <app-home-course-card
+        *ngFor="let course of coursesArray"
+        [course]="course"
+      ></app-home-course-card>
+    </div>
+  </section>
+  <ng-template #loading>
+    <br />
+    <span class="loader"></span>
+  </ng-template>
 </div>

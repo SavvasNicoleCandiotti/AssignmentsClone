@@ -2,16 +2,21 @@
   <div class="card-content">
     <div class="content columns">
       <div class="column">
-        <img src="../../../assets/icon1.png" alt="">
-        <p class="title is-4">{{programAssignment.title}}</p>
+        <img src="../../../assets/icon1.png" alt="" />
+        <p class="title is-4">{{ programAssignment.title }}</p>
       </div>
       <div class="column assignbutton is-two-fifths">
-        <button (click)="openCreateCourseAssignmentModal()"class="button is-info is-light">Assign to Course</button>
-        <fa-icon color="blue"[icon]="faEllipsisVertical"></fa-icon>
+        <button
+          (click)="openCreateCourseAssignmentModal()"
+          class="button is-info is-light"
+        >
+          Assign to Course
+        </button>
+        <fa-icon color="blue" [icon]="faEllipsisVertical"></fa-icon>
       </div>
     </div>
-    <p>{{programAssignment.description}}</p>
-    <hr>
+    <p>{{ programAssignment.description }}</p>
+    <hr />
   </div>
-  <hr>
+  <hr />
 </div>

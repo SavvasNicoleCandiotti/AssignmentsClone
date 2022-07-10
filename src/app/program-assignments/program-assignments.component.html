@@ -1,16 +1,17 @@
 <div class="container">
-    <div class="subtitle">
-       <p>Assignments</p>
-       <fa-icon [icon]="faEllipsisVertical"></fa-icon>
-    </div>
-    <div *ngIf="status != 'loading'; else loading">
-        <app-program-assignment (showProgramCard)="showCard()"
-        *ngFor="let programAssignment of programAssignmentsArray"
-        [programAssignment]="programAssignment"
-        ></app-program-assignment>
-    </div>
-    <ng-template #loading>
-        <br>
-        <span class="loader"></span>
-    </ng-template>
+  <div class="subtitle">
+    <p>Assignments</p>
+    <fa-icon [icon]="faEllipsisVertical"></fa-icon>
+  </div>
+  <div *ngIf="status != 'loading'; else loading">
+    <app-program-assignment
+      (showProgramCard)="showCard()"
+      *ngFor="let programAssignment of programAssignmentsArray"
+      [programAssignment]="programAssignment"
+    ></app-program-assignment>
+  </div>
+  <ng-template #loading>
+    <br />
+    <span class="loader"></span>
+  </ng-template>
 </div>

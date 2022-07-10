@@ -1,46 +1,58 @@
 <section class="section is-medium" *ngIf="status != 'loading'; else loading">
-    <div class="columns">
-        <div class="column">
-                <h1 class="title">{{courseAssignment.title}}</h1>
-                <h2 class="subtitle">{{courseAssignment.description}}</h2>
-                <p>Assigned on: {{courseAssignment.assignedOn | date}}</p>
-                <p>Due on: {{courseAssignment.dueOn | date}}</p>
-        </div>
-        <div (click)="handleKebabClick()" class="column kebab">
-                <fa-icon [icon]="faEllipsisVertical"></fa-icon>
-                <div *ngIf="showKebab" class="dropdown is-active">
-                    <div class="dropdown-menu" id="dropdown-menu" role="menu">
-                        <div class="dropdown-content">
-                            <a class="dropdown-item" (click)="showEditAssignmentModal = !showEditAssignmentModal">
-                                Edit Assignment
-                            </a>
-                        </div>
-
-                    </div>
-                </div>
-        </div>
+  <div class="columns">
+    <div class="column">
+      <h1 class="title">{{ courseAssignment.title }}</h1>
+      <h2 class="subtitle">{{ courseAssignment.description }}</h2>
+      <p>Assigned on: {{ courseAssignment.assignedOn | date }}</p>
+      <p>Due on: {{ courseAssignment.dueOn | date }}</p>
     </div>
-
-    <br>
-    <div class="container">
-        <div class="columns is-tablet">
-            <div class="column">
-                <button class="button is-success is-responsive" (click)="navigateToCourseAssignments()">Return to Assignments</button>
-            </div>
-            <div class="column">
-                <button class="button is-success is-responsive" (click)="navigateHome()">Return to Home</button>
-            </div>
-
+    <div (click)="handleKebabClick()" class="column kebab">
+      <fa-icon [icon]="faEllipsisVertical"></fa-icon>
+      <div *ngIf="showKebab" class="dropdown is-active">
+        <div class="dropdown-menu" id="dropdown-menu" role="menu">
+          <div class="dropdown-content">
+            <a
+              class="dropdown-item"
+              (click)="showEditAssignmentModal = !showEditAssignmentModal"
+            >
+              Edit Assignment
+            </a>
+          </div>
         </div>
+      </div>
     </div>
+  </div>
+
+  <br />
+  <div class="container">
+    <div class="columns is-tablet">
+      <div class="column">
+        <button
+          class="button is-success is-responsive"
+          (click)="navigateToCourseAssignments()"
+        >
+          Return to Assignments
+        </button>
+      </div>
+      <div class="column">
+        <button
+          class="button is-success is-responsive"
+          (click)="navigateHome()"
+        >
+          Return to Home
+        </button>
+      </div>
+    </div>
+  </div>
 </section>
-<app-edit-course-assignment-modal [courseAssignment]="courseAssignment"*ngIf="showEditAssignmentModal" (closeEditModal)="showEditAssignmentModal=false"></app-edit-course-assignment-modal>
+<app-edit-course-assignment-modal
+  [courseAssignment]="courseAssignment"
+  *ngIf="showEditAssignmentModal"
+  (closeEditModal)="showEditAssignmentModal = false"
+></app-edit-course-assignment-modal>
 <ng-template #loading>
-    <section class="section is-medium">
-        <br>
-        <span class="loader"></span>
-    </section>
+  <section class="section is-medium">
+    <br />
+    <span class="loader"></span>
+  </section>
 </ng-template>
-
-
-
