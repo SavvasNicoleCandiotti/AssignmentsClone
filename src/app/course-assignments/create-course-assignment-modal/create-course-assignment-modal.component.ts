@@ -8,6 +8,7 @@ import { AssignmentsService } from 'src/app/services/assignments.service';
 import { CourseAssignmentsService } from 'src/app/services/course-assignments.service';
 import { CoursesService } from 'src/app/services/courses.service';
 import { HttpService } from 'src/app/services/http.service';
+import { faXmark } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-create-course-assignment-modal',
@@ -20,6 +21,7 @@ export class CreateCourseAssignmentModalComponent implements OnInit {
   randomTestNumber = 5
   @Output() modalBtnClick = new EventEmitter()
   @Output() onAddAssignment: EventEmitter<CourseAssignmentInterface> = new EventEmitter()
+  faXmark = faXmark
 
   coursesArray : {} = this.coursesService.getCourses()
 
@@ -36,7 +38,7 @@ export class CreateCourseAssignmentModalComponent implements OnInit {
     private courseAssignmentsService : CourseAssignmentsService,
     private assignmentsService : AssignmentsService,
     private coursesService : CoursesService,
-    private httpService : HttpService, 
+    private httpService : HttpService,
     private route : ActivatedRoute
   ) {
    }
@@ -69,7 +71,7 @@ export class CreateCourseAssignmentModalComponent implements OnInit {
     this.courseAssignmentForm.reset()
 
     // closes modal once form is submitted
-     this.modalBtnClick.emit()
+    this.onClick()
   }
 
   setLength(event){
