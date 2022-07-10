@@ -10,6 +10,7 @@
             [formGroup]="modalForm"
             (ngSubmit)="submitModalForm(modalForm.value)"
           >
+            <h1 class="title">Create an assignment</h1>
             <label class="label" for="title">Assignment name:</label>
             <input
               class="input"
@@ -33,15 +34,28 @@
             </p>
 
             <br />
-            <button [disabled]="!modalForm.valid" class="button" type="submit">
-              Add Assignment to Program
-            </button>
+            <div class="modalButtons">
+              <button
+                class="button"
+                class="button is-info is-light"
+                (click)="onClick()"
+              >
+                Cancel
+              </button>
+              <button
+                [disabled]="!modalForm.valid"
+                class="button is-info"
+                type="submit"
+              >
+                Add Assignment to Program
+              </button>
+            </div>
             <br />
           </form>
         </div>
-        <div class="column">
+        <!-- <div class="column">
           <img src="../../../assets/icon4.png" alt="course icon" />
-        </div>
+        </div> -->
       </div>
     </div>
   </div>
