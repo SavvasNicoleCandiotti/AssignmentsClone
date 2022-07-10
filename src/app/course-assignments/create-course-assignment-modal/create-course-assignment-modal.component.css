@@ -23,14 +23,6 @@
     padding: 1rem
 }
 
-img {
-    display: flex;
-    align-items: center;
-    height: 200px;
-    width: 200px;
-    border-radius: 30px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.623);
-}
 h3 {
     font-size: 40px;
 }
@@ -50,3 +42,16 @@ h3 {
     margin-top: 100px;
     width: 450px;
   }
+
+.modalButtons {
+    display:flex;
+    justify-content: flex-end;
+}
+button {
+    margin: 10px;
+}
+.xmark {
+    display:flex;
+    justify-content: flex-end;
+
+}
