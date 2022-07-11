@@ -1,57 +1,43 @@
 .section {
-    line-height: 20px;
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background-color: white;
-    min-height: 50vh;
-    min-width: 75vh;
+  line-height: 20px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  min-height: 50vh;
+  min-width: 75vh;
 
-    z-index: 10;
-    padding: 20px 20px;
-    border-radius: 20px;
-    border: solid rgba(6, 75, 59);
-    margin-bottom: 20px;
+  z-index: 10;
+  padding: 20px 20px;
+  border-radius: 20px;
+  border: solid rgba(6, 75, 59);
+  margin-bottom: 20px;
 }
 
 .column {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding: 1rem
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
 }
 
 h3 {
-    font-size: 40px;
+  font-size: 40px;
 }
 
 .header {
-    display: flex;
-    justify-content: flex-end;
-    padding: 10px;
+  display: flex;
+  justify-content: flex-end;
+  padding: 10px;
 }
 
-.warning{
-    color: red;
-    font-weight: bold;
+.warning {
+  color: red;
+  font-weight: bold;
 }
 
-.modal-content {
-    margin-top: 100px;
-    width: 450px;
-  }
-
-.modalButtons {
-    display:flex;
-    justify-content: flex-end;
-}
 button {
-    margin: 10px;
-}
-.xmark {
-    display:flex;
-    justify-content: flex-end;
-
+  margin: 10px;
 }
