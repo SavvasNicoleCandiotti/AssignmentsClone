@@ -46,7 +46,7 @@ export class CreateCourseAssignmentModalComponent implements OnInit {
 
   ngOnInit(): void {
     this.courseAssignmentsService.toggleModalEvent.subscribe((boolean) =>
-      console.log('hi')
+      null
     );
     if (this.coursesService.getCoursesStatus() === 'idle') {
       this.getCourses();
@@ -66,12 +66,12 @@ export class CreateCourseAssignmentModalComponent implements OnInit {
     this.courseAssignmentsService
       .postAssignment(value)
       .subscribe((courseAssignment: CourseAssignmentInterface) => {
-        this.courseAssignmentsService.addCourseAssignment(courseAssignment);
-        //the event needs to be emitted inside this code block, it doesn't work below it
+        this.coursesService.addCourseAssignmentToCourse(courseAssignment);
         this.httpService.postEvent.emit();
+
+        //the event needs to be emitted inside this code block, it doesn't work below it
       });
 
-    // reset values once form is submitted - is there a reset method on forms?
     this.courseAssignmentForm.reset();
 
     // closes modal once form is submitted
