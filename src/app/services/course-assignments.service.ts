@@ -22,6 +22,13 @@ export class CourseAssignmentsService {
   searchTerm: string = '';
   course_id: number;
 
+  selectCourseAssignmentEvent = new EventEmitter<CourseAssignmentInterface>();
+  fetchEvent = new EventEmitter<string>();
+  updateEvent = new EventEmitter<void>();
+  toggleModalEvent = new EventEmitter<boolean>();
+  deleteEvent = new EventEmitter<void>();
+  postEvent = new EventEmitter<void>();
+
   constructor(private http: HttpClient) {}
   // index route
   fetchAllCourseAssignments() {
@@ -77,49 +84,31 @@ export class CourseAssignmentsService {
     );
   };
 
-  selectCourseAssignmentEvent = new EventEmitter<CourseAssignmentInterface>();
-
   getCourseAssignments = () => [...this.courseAssignmentsArray];
 
-  getCourseAssignment = (id: number) =>
-    this.courseAssignmentsArray.find(
+  getCourseAssignment = (id: number) => this.courseAssignmentsArray.find(
       (courseAssignment) => courseAssignment.id === id
     );
 
   setCourseAssignments = (array) => (this.courseAssignmentsArray = array);
 
-  addCourseAssignment = (courseAssignment) => {
-    this.courseAssignmentsArray = [
-      ...this.courseAssignmentsArray,
-      { ...courseAssignment },
-    ];
-  };
+  addCourseAssignment = (courseAssignment) => this.courseAssignmentsArray = [...this.courseAssignmentsArray, ...courseAssignment]
 
-  getCourseAssignmentsForProgram = (id: number) =>
-    this.courseAssignmentsArray.filter(
-      (courseAssignment) => courseAssignment.program_id === id
-    );
-  getCourseAssignmentsForCourse = (id: number) =>
-    this.courseAssignmentsArray.filter(
-      (courseAssignment) => courseAssignment.course_id === id
-    );
+  getCourseAssignmentsForProgram = (id: number) => this.courseAssignmentsArray.filter(
+      (courseAssignment) => courseAssignment.program_id === id);
+
+  getCourseAssignmentsForCourse = (id: number) => this.courseAssignmentsArray.filter(
+      (courseAssignment) => courseAssignment.course_id === id);
 
   setStatus = (status) => (this.courseAssignmentsStatus = status);
 
   getStatus = () => this.courseAssignmentsStatus;
 
   getCourseAssignmentStatus = () => this.courseAssignmentStatus;
-  setCourseAssignmentStatus = (status) =>
-    (this.courseAssignmentStatus = status);
+  setCourseAssignmentStatus = (status) => this.courseAssignmentStatus = status;
 
-  setSelectedCourseAssignment = (courseAssignment: CourseAssignmentInterface) =>
-    (this.selectedCourseAssignment = courseAssignment);
+  setSelectedCourseAssignment = (courseAssignment: CourseAssignmentInterface) => this.selectedCourseAssignment = courseAssignment;
   getSelectedCourseAssignment = () => this.selectedCourseAssignment;
-
-  fetchEvent = new EventEmitter<string>();
-  updateEvent = new EventEmitter<void>();
-  toggleModalEvent = new EventEmitter<boolean>();
-  deleteEvent = new EventEmitter<void>();
 
   formatDate(date: string) {
     return new Date(
