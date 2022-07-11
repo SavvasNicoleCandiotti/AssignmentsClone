@@ -28,8 +28,8 @@ export class EditCourseAssignmentModalComponent implements OnInit {
     private coursesService : CoursesService) { }
 
   ngOnInit(): void {
-
   }
+  
   handleCloseEditModal(){
     this.closeEditModal.emit()
   }
