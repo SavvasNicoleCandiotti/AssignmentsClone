@@ -18,10 +18,10 @@ const routes: Routes = [
         children: [
           { path: "", component: ProgramDetailComponent},
           {
-            path: "course_assignments", 
+            path: "assignments", 
             children: [
-              {path: ":id", component: CourseAssignmentDetailComponent},
-              {path: '', component: CourseAssignmentsComponent}
+              {path: ":id", component: AssignmentDetailComponent},
+              {path: '', component: AssignmentsComponent}
             ]}
         ]
       },
@@ -45,8 +45,6 @@ const routes: Routes = [
       {path: "", component: ProgramsComponent}
     ]
   },
-  {path: 'assignments', component: AssignmentsComponent},
-  {path: 'assignments/:id', component: AssignmentDetailComponent},
   {path: '', component: HomeComponent}
 ];
 
