@@ -1,28 +1,42 @@
 .course-assignment-tile {
-    border: 1px solid;
-    border-color: gray;
-    border-radius: 4px;
-    padding: 2px;
-    margin: 4px;
+  border: 1px solid;
+  border-color: gray;
+  border-radius: 4px;
+  padding: 2px;
+  margin: 4px;
 }
 
 .course-assignment-title {
-    text-align: left;
-    display: flex;
-    align-items: top;
-    font-weight: bold;
+  text-align: left;
+  display: flex;
+  align-items: top;
+  font-weight: bold;
 }
 
 .course-assignment-date {
-    font-style: italic;
-    font-weight: lighter;
-    text-align: right;
+  display: flex;
+  justify-content: flex-end;
+  flex-direction: column;
+  font-style: italic;
+  font-weight: lighter;
+  text-align: right;
+  /* align-items: center; */
 }
 
 img {
-    max-height: 50px;
+  max-height: 50px;
 }
 
 .img-container {
-    margin-right: 10px;
+  margin-right: 10px;
+}
+
+.assignment-container {
+  margin: 10px;
+
+  border-radius: 10px;
+}
+fa-icon {
+  display: flex;
+  align-items: center;
 }

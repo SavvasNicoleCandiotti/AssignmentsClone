@@ -1,20 +1,18 @@
 .assignment-tile {
-    border: 1px solid;
-    border-color: gray;
-    border-radius: 4px;
-    padding: 2px;
-    margin: 4px;
+  border: 1px solid;
+  border-color: gray;
+  border-radius: 4px;
+  padding: 2px;
+  margin: 4px;
+  text-align: left;
+  display: flex;
+  align-items: top;
+  font-weight: bold;
 }
 
-.assignment-title {
-    text-align: left;
-    display: flex;
-    align-items: top;
-    font-weight: bold;
-}
 div.assignment-tile.columns {
-    display:flex;
-    justify-content: space-between;
-    align-items: center;
-    padding-right: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-right: 10px;
 }
