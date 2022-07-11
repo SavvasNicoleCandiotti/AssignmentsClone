@@ -13,6 +13,10 @@ export class CoursesService {
     programs: {}[];
     course_assignments: CourseAssignmentInterface[];
   }[] = [];
+
+  //I don't think this is a valid data item
+  //It would be a courseAssignmentArrayForSelectedCourse perhaps
+  //there isn't a single array of courseAssignments, there is one for each course
   courseAssignmentsArray;
   filteredArray = [];
 
@@ -102,6 +106,21 @@ export class CoursesService {
     });
   }
 
+  addCourseAssignmentToCourse(courseAssignment: CourseAssignmentInterface) {
+    this.coursesArray = this.coursesArray.map((course) => {
+      if (course.id === courseAssignment.course_id) {
+        return {
+          ...course,
+          course_assignments: [...course.course_assignments, courseAssignment]
+        };
+      } else {
+        return course;
+      }
+    });
+  }
+
+  getCourseAssignmentsForCourse = (courseId : number) => this.coursesArray.find((course) => course.id === courseId).course_assignments
+    
   getCourseAssignments = () =>
     (this.courseAssignmentsArray = this.coursesArray.map(
       (course) => course.course_assignments
