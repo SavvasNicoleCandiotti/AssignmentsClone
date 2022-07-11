@@ -27,12 +27,17 @@ export class HomeComponent implements OnInit {
     );
 
     this.courseAssignmentsService.updateEvent.subscribe(
-      () => (this.coursesArray = this.coursesService.getCourses())
+      () => this.coursesArray = this.coursesService.getCourses()
     );
 
     this.courseAssignmentsService.deleteEvent.subscribe(
-      () => (this.coursesArray = this.coursesService.getCourses())
+      () => this.coursesArray = this.coursesService.getCourses()
     );
+
+    this.httpService.postEvent.subscribe(
+      () => this.coursesArray = this.coursesService.getCourses()
+    );
+
     //check the status of courses to see if they have already been fetched before
     //this will prevent the fetch from happening everytime the component is constructed
     this.status = this.coursesService.getStatus();
