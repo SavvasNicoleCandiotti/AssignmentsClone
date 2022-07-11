@@ -34,7 +34,6 @@ export class HomeCourseCardComponent implements OnInit {
   faCaretDown = faCaretDown;
 
   constructor(
-    private route: ActivatedRoute,
     private router: Router,
     private httpService: HttpService,
     private courseAssignmentService: CourseAssignmentsService,
@@ -43,7 +42,7 @@ export class HomeCourseCardComponent implements OnInit {
 
   ngOnInit(): void {
     this.courseAssignmentService.course_id = this.course.id;
-    this.courseAssignmentsArray = this.course.course_assignments;
+    this.courseAssignmentsArray = this.coursesService.getCourseAssignmentsForCourse(this.course.id);
   }
 
   handleClick() {
@@ -68,12 +67,9 @@ export class HomeCourseCardComponent implements OnInit {
     //sets search term in service
     this.courseAssignmentService.searchTerm = e.target.value;
 
-    let courseAssignments = this.course.course_assignments;
-
-    let filteredArray = courseAssignments.filter((course) =>
-      course.title.toLowerCase().includes(e.target.value.toLowerCase())
-    );
-    this.courseAssignmentsArray = filteredArray;
+    this.courseAssignmentsArray = this.course.courseAssignments.filter((course) =>
+    course.title.toLowerCase().includes(e.target.value.toLowerCase())
+  );
     this.httpService.searchEvent.emit(e.target.value);
   }
 }
