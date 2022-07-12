@@ -36,6 +36,10 @@ export class ProgramDetailComponent implements OnInit {
       this.showCreateCourseAssignmentModal = boolean
     })
     
+    this.assignmentsService.toggleCreateAssignmentModalEvent
+    .subscribe(boolean => {
+      this.showCreateAssignmentModal = boolean
+    })
     this.programsService.selectProgramEvent
       .subscribe(program => this.program = program);
 
