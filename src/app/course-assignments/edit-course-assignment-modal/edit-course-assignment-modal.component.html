@@ -24,16 +24,16 @@
               <label class="label" for="">Due on:</label>
               <input class="input" type="date" formControlName="dueOn" />
               <br />
+              <div class="modalButtons">
+                <button
+                  (click)="handleDelete(courseAssignment.id)"
+                  class="button is-info is-light"
+                >
+                  Delete This Assignment
+                </button>
+                <button class="button is-info" type="submit">Submit</button>
+              </div>
             </form>
-            <div class="modalButtons">
-              <button
-                (click)="handleDelete(courseAssignment.id)"
-                class="button is-info is-light"
-              >
-                Delete This Assignment
-              </button>
-              <button class="button is-info" type="submit">Submit</button>
-            </div>
           </div>
         </div>
       </div>
