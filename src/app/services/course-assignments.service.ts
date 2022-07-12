@@ -92,7 +92,7 @@ export class CourseAssignmentsService {
 
   setCourseAssignments = (array) => (this.courseAssignmentsArray = array);
 
-  addCourseAssignment = (courseAssignment) => this.courseAssignmentsArray = [...this.courseAssignmentsArray, ...courseAssignment]
+  addCourseAssignment = (courseAssignment) => this.courseAssignmentsArray = [...this.courseAssignmentsArray, courseAssignment]
 
   getCourseAssignmentsForProgram = (id: number) => this.courseAssignmentsArray.filter(
       (courseAssignment) => courseAssignment.program_id === id);
