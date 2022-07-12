@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { AssignmentsService } from '../services/assignments.service';
 import { faEllipsisVertical } from '@fortawesome/free-solid-svg-icons';
@@ -63,4 +63,7 @@ export class ProgramAssignmentsComponent implements OnInit {
     console.log('show card')
   }
 
+  toggleModal(){
+    this.assignmentsService.toggleCreateAssignmentModalEvent.emit(true)
+  }
 }
