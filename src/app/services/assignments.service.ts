@@ -14,9 +14,11 @@ const httpOptions = {
 })
 export class AssignmentsService {
   private apiUrl = 'http://localhost:3000/assignments'
+  
 
   private assignmentsArray : AssignmentInterface[] = []
   private assignmentsSubject = new BehaviorSubject<AssignmentInterface[]>([])
+  toggleCreateAssignmentModalEvent = new EventEmitter<boolean>();
 
   private assignmentsStatus = "idle"
   public assignmentStatus = "idle"

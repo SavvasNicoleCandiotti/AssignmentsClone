@@ -17,7 +17,6 @@ export class CreateAssignmentModalComponent implements OnInit {
   program_id:number =  parseInt(this.route.snapshot.params['id']) //taking the id from the route parameters and assigning it to variable
   @Input() showModal:boolean
   randomTestNumber = 5
-  @Output() modalBtnClick = new EventEmitter()
   @Output() onAddAssignment: EventEmitter<AssignmentInterface> = new EventEmitter()
 
 
@@ -39,7 +38,7 @@ export class CreateAssignmentModalComponent implements OnInit {
   }
   //click event for closing modal X button
   onClick(){
-    this.modalBtnClick.emit()
+    this.assignmentsService.toggleCreateAssignmentModalEvent.emit(false)
   }
 
   submitModalForm(value:AssignmentInterface){
@@ -56,7 +55,7 @@ export class CreateAssignmentModalComponent implements OnInit {
 
 
     // closes modal once form is submitted
-     this.modalBtnClick.emit()
+    this.assignmentsService.toggleCreateAssignmentModalEvent.emit(false)
   }
 
   // sets length for character limit

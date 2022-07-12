@@ -54,12 +54,13 @@ export class HomeCourseCardComponent implements OnInit {
   };
 
   selectCourseAssignment = (id) =>
-    this.router.navigate([
+    { this.courseAssignmentService.selectCourseAssignmentEvent.emit(this.courseAssignmentsArray.find(ca => ca.id === id))
+      this.router.navigate([
       '/courses',
       this.course.id,
       'course_assignments',
       id,
-    ]);
+    ]);}
 
   handleSearch(e) {
     //sets course id in service
@@ -67,9 +68,12 @@ export class HomeCourseCardComponent implements OnInit {
     //sets search term in service
     this.courseAssignmentService.searchTerm = e.target.value;
 
-    this.courseAssignmentsArray = this.course.courseAssignments.filter((course) =>
-    course.title.toLowerCase().includes(e.target.value.toLowerCase())
-  );
+    let courseAssignments = this.course.course_assignments;
+
+    let filteredArray = courseAssignments.filter((course) =>
+      course.title.toLowerCase().includes(e.target.value.toLowerCase())
+    );
+    this.courseAssignmentsArray = filteredArray;
     this.httpService.searchEvent.emit(e.target.value);
   }
 }
