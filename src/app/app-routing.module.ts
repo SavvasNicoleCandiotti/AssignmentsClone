@@ -11,45 +11,49 @@ import { ProgramsComponent } from './programs/programs.component';
 
 const routes: Routes = [
   {
-    path: "programs",
+    path: 'programs',
     children: [
       {
-        path: ":id", 
+        path: ':id',
         children: [
-          { path: "", component: ProgramDetailComponent},
+          { path: '', component: ProgramDetailComponent },
           {
-            path: "assignments", 
+            path: 'course_assignments',
             children: [
-              {path: ":id", component: AssignmentDetailComponent},
-              {path: '', component: AssignmentsComponent}
-            ]}
-        ]
+              { path: ':id', component: CourseAssignmentDetailComponent },
+              { path: '', component: CourseAssignmentsComponent },
+            ],
+          },
+        ],
       },
-      {path: "", component: ProgramsComponent}
-    ]
+      { path: '', component: ProgramsComponent },
+    ],
   },
   {
-    path: "courses",
+    path: 'courses',
     children: [
       {
-        path: ":id", 
+        path: ':id',
         children: [
           {
-            path: "course_assignments", 
+            path: 'course_assignments',
             children: [
-              {path: ":id", component: CourseAssignmentDetailComponent},
-              {path: '', component: CourseAssignmentsComponent}
-            ]}
-        ]
+              { path: ':id', component: CourseAssignmentDetailComponent },
+              { path: '', component: CourseAssignmentsComponent },
+            ],
+          },
+        ],
       },
-      {path: "", component: ProgramsComponent}
-    ]
+      { path: '', component: ProgramsComponent },
+    ],
   },
-  {path: '', component: HomeComponent}
+  { path: 'assignments', component: AssignmentsComponent },
+  { path: 'assignments/:id', component: AssignmentDetailComponent },
+  { path: '', component: HomeComponent },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

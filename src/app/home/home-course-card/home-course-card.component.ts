@@ -42,7 +42,8 @@ export class HomeCourseCardComponent implements OnInit {
 
   ngOnInit(): void {
     this.courseAssignmentService.course_id = this.course.id;
-    this.courseAssignmentsArray = this.coursesService.getCourseAssignmentsForCourse(this.course.id);
+    this.courseAssignmentsArray =
+      this.coursesService.getCourseAssignmentsForCourse(this.course.id);
   }
 
   handleClick() {
@@ -60,16 +61,16 @@ export class HomeCourseCardComponent implements OnInit {
       'course_assignments',
       id,
     ]);
-
   handleSearch(e) {
     //sets course id in service
     this.courseAssignmentService.course_id = this.course.id;
     //sets search term in service
     this.courseAssignmentService.searchTerm = e.target.value;
 
-    this.courseAssignmentsArray = this.course.courseAssignments.filter((course) =>
-    course.title.toLowerCase().includes(e.target.value.toLowerCase())
-  );
+    this.courseAssignmentsArray = this.course.courseAssignments.filter(
+      (course) =>
+        course.title.toLowerCase().includes(e.target.value.toLowerCase())
+    );
     this.httpService.searchEvent.emit(e.target.value);
   }
 }
