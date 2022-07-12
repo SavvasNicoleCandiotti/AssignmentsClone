@@ -2,14 +2,8 @@
   <div class="columns">
     <div class="column is-one-quarter">
       <app-program-assignments></app-program-assignments>
-      <button class="button" (click)="toggleModal()">
-        Add an Assignment to this Program
-      </button>
     </div>
     <div class="column is-three-quarters">
-      <p>Search area</p>
-      <hr />
-      <br />
       <app-program-assignment-detail
         [programAssignment]="programAssignment"
         *ngIf="programAssignment"
