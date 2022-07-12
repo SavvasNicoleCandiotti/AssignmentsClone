@@ -9,6 +9,9 @@
       *ngFor="let programAssignment of programAssignmentsArray"
       [programAssignment]="programAssignment"
     ></app-program-assignment>
+    <button class="button" (click)="toggleModal()">
+      Add an Assignment to this Program
+    </button>
   </div>
   <ng-template #loading>
     <br />
