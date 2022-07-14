@@ -12,19 +12,11 @@ import { AssignmentInterface } from 'src/app/models/AssignmentInterface';
 export class ProgramAssignmentComponent implements OnInit {
   faChevronRight=faChevronRight
   @Input() programAssignment : AssignmentInterface
-  @Output() showProgramCard = new EventEmitter()
 
   constructor(
-    private assignmentsService: AssignmentsService
   ) {
    }
 
   ngOnInit(): void {
-  }
-
-  selectAssignment = () => {
-    this.assignmentsService.setSelectedAssignment(this.programAssignment)
-    this.assignmentsService.selectProgramAssignmentEvent.emit(this.programAssignment)
-    this.showProgramCard.emit()
   }
 }
