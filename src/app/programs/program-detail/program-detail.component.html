@@ -4,12 +4,8 @@
       <app-program-assignments></app-program-assignments>
     </div>
     <div class="column is-three-quarters">
-      <app-program-assignment-detail
-        [programAssignment]="programAssignment"
-        *ngIf="programAssignment"
-      ></app-program-assignment-detail>
+      <router-outlet></router-outlet>
     </div>
-    <br />
   </div>
   <br />
   <app-create-assignment-modal
