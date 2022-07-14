@@ -12,18 +12,10 @@ export class ProgramComponent implements OnInit {
 
   @Input() program : ProgramInterface
 
-  constructor(
-    private programsService : ProgramsServiceService,
-    private router : Router,
-    private route : ActivatedRoute
-  ) {
+  constructor() {
    }
 
   ngOnInit(): void {
   }
 
-  selectProgram = () => {
-    this.programsService.selectProgramEvent.emit(this.program)
-    this.router.navigate([this.program.id], {relativeTo: this.route})
-  }
 }
