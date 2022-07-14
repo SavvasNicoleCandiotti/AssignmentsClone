@@ -1,11 +1,12 @@
 <div class="container">
   <div class="subtitle">
-    <p>Assignments</p>
+    <p
+    [routerLink]="['/programs', program_id]">Assignments</p>
     <fa-icon [icon]="faEllipsisVertical"></fa-icon>
   </div>
   <div *ngIf="status != 'loading'; else loading">
     <app-program-assignment
-      (showProgramCard)="showCard()"
+      [routerLink]="['assignments', programAssignment.id]"
       *ngFor="let programAssignment of programAssignmentsArray"
       [programAssignment]="programAssignment"
     ></app-program-assignment>
