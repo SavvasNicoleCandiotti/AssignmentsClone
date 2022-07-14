@@ -1,22 +1,29 @@
-<div class="card">
-  <div class="card-content">
-    <div class="content columns">
-      <div class="column">
-        <img src="../../../assets/icon1.png" alt="" />
-        <p class="title is-4">{{ programAssignment.title }}</p>
+<div class="section">
+  <div class="card" *ngIf="status != 'loading'; else loading">
+    <div class="card-content">
+      <div class="content columns">
+        <div class="column">
+          <img src="../../../assets/icon1.png" alt="" />
+          <p class="title is-4">{{ programAssignment.title }}</p>
+        </div>
+        <div class="column assignbutton is-two-fifths">
+          <button
+            (click)="openCreateCourseAssignmentModal()"
+            class="button is-info is-light"
+          >
+            Assign to Course
+          </button>
+          <fa-icon color="blue" [icon]="faEllipsisVertical"></fa-icon>
+        </div>
       </div>
-      <div class="column assignbutton is-two-fifths">
-        <button
-          (click)="openCreateCourseAssignmentModal()"
-          class="button is-info is-light"
-        >
-          Assign to Course
-        </button>
-        <fa-icon color="blue" [icon]="faEllipsisVertical"></fa-icon>
-      </div>
+      <p>{{ programAssignment.description }}</p>
+      <hr />
     </div>
-    <p>{{ programAssignment.description }}</p>
     <hr />
   </div>
-  <hr />
+  <ng-template #loading>
+    <br />
+    <span class="loader"></span>
+  </ng-template>
 </div>
+
