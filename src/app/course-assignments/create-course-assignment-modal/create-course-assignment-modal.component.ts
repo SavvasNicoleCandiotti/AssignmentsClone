@@ -16,8 +16,7 @@ import { faXmark } from '@fortawesome/free-solid-svg-icons';
   styleUrls: ['./create-course-assignment-modal.component.css'],
 })
 export class CreateCourseAssignmentModalComponent implements OnInit {
-  @Input() assignment: AssignmentInterface =
-    this.assignmentsService.getSelectedAssignment();
+  assignment: AssignmentInterface = this.assignmentsService.getAssignment(+this.route.snapshot.params['id'])
   @Input() showModal: boolean = false;
   randomTestNumber = 5;
   @Output() modalBtnClick = new EventEmitter();
@@ -45,6 +44,8 @@ export class CreateCourseAssignmentModalComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+
+    this.assignment = this.assignmentsService.getAssignment(+this.route.snapshot.params['id'])
     this.courseAssignmentsService.toggleModalEvent.subscribe((boolean) =>
       null
     );
@@ -61,8 +62,7 @@ export class CreateCourseAssignmentModalComponent implements OnInit {
   }
 
   submitModalForm(value: CourseAssignmentInputInterface) {
-    // this neeeds to take in an assignment
-    // this.onAddAssignment.emit(value)
+    
     this.courseAssignmentsService
       .postAssignment(value)
       .subscribe((courseAssignment: CourseAssignmentInterface) => {
