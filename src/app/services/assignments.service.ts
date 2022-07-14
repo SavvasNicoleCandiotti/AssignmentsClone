@@ -32,7 +32,7 @@ export class AssignmentsService {
     }
 
     // show route
-  fetchAssignment(id){
+  fetchAssignment(id : number){
     return this.http.get('http://localhost:3000/assignments/' + id);
   }
 
