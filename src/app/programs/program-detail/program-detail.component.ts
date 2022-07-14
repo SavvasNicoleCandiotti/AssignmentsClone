@@ -20,7 +20,6 @@ export class ProgramDetailComponent implements OnInit {
   public program: ProgramInterface
 
   public status : string = "idle"
-  @Input() programAssignment : AssignmentInterface
 
   constructor(
     private programsService : ProgramsServiceService,
@@ -47,17 +46,15 @@ export class ProgramDetailComponent implements OnInit {
       .subscribe(status => this.status = status);
 
       //need to add error handling. What if they enter a url without a record?
-    if(this.programsService.getProgram(parseInt(this.route.snapshot.params['id']))){
+    if(this.programsService.getProgram(+this.route.snapshot.params['id'])){
         this.program = this.programsService.getProgram(
-          parseInt(this.route.snapshot.params['id']))
+          +this.route.snapshot.params['id'])
           console.log("Didn't fetch")
       }else{
         this.getFetchedProgram()
       }
-    this.program = this.programsService.getProgram(
-      parseInt(this.route.snapshot.params['id'])
-    )
-    this.assignmentsService.selectProgramAssignmentEvent.subscribe(programAssignment => this.programAssignment = programAssignment)
+
+    this.program = this.programsService.getProgram(+this.route.snapshot.params['id'])
   }
   
   //toggleModal for CreateCA lives in program-assignment-detail where the button is
@@ -78,7 +75,7 @@ export class ProgramDetailComponent implements OnInit {
 
   //this won't work
   //courses/1/course_assignments
-  navigateToPrograms = () => this.router.navigate(['assignments'])
+  navigateToPrograms = () => this.router.navigate(['/programs'])
 
 
   navigateHome = () => this.router.navigate(['/'])
