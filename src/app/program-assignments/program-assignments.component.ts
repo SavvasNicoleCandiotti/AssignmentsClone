@@ -1,7 +1,8 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { AssignmentsService } from '../services/assignments.service';
 import { faEllipsisVertical } from '@fortawesome/free-solid-svg-icons';
+import { AssignmentInterface } from '../models/AssignmentInterface';
 
 @Component({
   selector: 'app-program-assignments',
@@ -10,10 +11,10 @@ import { faEllipsisVertical } from '@fortawesome/free-solid-svg-icons';
 })
 export class ProgramAssignmentsComponent implements OnInit {
   faEllipsisVertical=faEllipsisVertical
-  programAssignmentsArray : {}[]
+  programAssignmentsArray : AssignmentInterface[]
 
   public status : string = "idle"
-  public program_id: number = parseInt(this.route.snapshot.params['id'])
+  public program_id: number = +this.route.snapshot.params['id']
 
   constructor(
     private assignmentsService : AssignmentsService,
@@ -34,8 +35,7 @@ export class ProgramAssignmentsComponent implements OnInit {
     this.status = this.assignmentsService.getStatus()
     if(this.status === "success"){
         this.programAssignmentsArray = this.assignmentsService.filterAssignmentsByProgram(
-          parseInt(this.route.snapshot.params['id']))
-          console.log(this.programAssignmentsArray)
+          +this.route.snapshot.params['id'])
           console.log("Didn't fetch")
       }else if(this.status === "idle"){
         this.getAllProgramAssignments()
@@ -50,17 +50,12 @@ export class ProgramAssignmentsComponent implements OnInit {
       () => this.assignmentsService.getAssignmentsTest().subscribe((r)=>{
         this.assignmentsService.setAssignments(r)
         this.programAssignmentsArray = this.assignmentsService.filterAssignmentsByProgram(
-          parseInt(this.route.snapshot.params['id'])
+          +this.route.snapshot.params['id']
         )
         this.assignmentsService.setStatus("success")
         this.assignmentsService.fetchEvent.emit("success")
         console.log("Fetched")
       }), 1000)
-  }
-
-
-  showCard(){
-    console.log('show card')
   }
 
   toggleModal(){
