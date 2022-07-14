@@ -1,7 +1,7 @@
-.column {
+/* .column {
     display:flex;
     padding:10px;
-}
+} */
 .assignbutton {
 display:flex;
 justify-content: space-around;
